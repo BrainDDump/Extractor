@@ -14,9 +14,8 @@ class Node: PFObject, PFSubclassing {
     @NSManaged var children: Array<String>?
     @NSManaged var depth:    Int
     
-    @NSManaged var rating:            Int
-    @NSManaged var state:             String
-    @NSManaged var childrenInProcess: Int
+    @NSManaged var rating:           Int
+    @NSManaged var reservedChildren: Int
     
     @NSManaged var owner:   PFUser
     @NSManaged var content: String

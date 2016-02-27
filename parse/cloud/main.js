@@ -4,10 +4,9 @@ const kMaxChildren = 2;
 
 var getFreeNode = function(callback) {
     var query = new Parse.Query("Node");
-    query.
-    query.notEqualTo("depth",           kMaxDepth);
-    query.lessThan("childrenInProcess", kMaxChildren);
-    query.greaterThan("rating", -2);
+    query.lessThan("depth",            kMaxDepth);
+    query.lessThan("reservedChildren", kMaxChildren);
+    query.greaterThan("rating",        -2);
     query.find({
         success: function(results) {
             if (results.length == 0) {
@@ -56,7 +55,7 @@ Parse.Cloud.define("pull", function(request, response) {
             getAncestors(node, function(ancestors) {
                 var newArray = new Array(node);
 
-                node.set("childLocked", true);
+                node.increment("reservedChildren", 1);
                 node.save({
                     success: function() {
                         response.success(ancestors.concat(newArray));
@@ -80,11 +79,16 @@ Parse.Cloud.define("reject", function(request, response) {
     var parentQuery = new Parse.Query("Node");
     parentQuery.get(parentNodeId, {
         success: function(parentNode) {
-            parentNode.increment("rating", -1);
-            parentNode.set("childLocked", false);
-            parentNode.save();
-
-            response.success();
+            parentNode.increment("rating",            -1);
+            parentNode.increment("reservedChildren", -1);
+            parentNode.save({
+                success: function() {
+                    response.success();
+                },
+                error: function(error) {
+                    response.error(error);
+                }
+            });
         },
         error: function(error) {
             response.error(error);
@@ -104,18 +108,20 @@ Parse.Cloud.afterSave("Node", function(request, response) {
     var parentQuery = new Parse.Query("Node");
     parentQuery.get(parentNodeId, {
         success: function(parentNode) {
-            parentNode.set("child",       newNode);
-            parentNode.set("childLocked", false);
-            parentNode.save();
-
-            response.success("Success afterSave");
+            parentNode.add("children",    newNode.id);
+            parentNode.save({
+                success: function() {
+                    response.success();
+                },
+                error: function(error) {
+                    response.error(error);
+                }
+            });
         },
         error: function(error) {
             response.error(error);
         }
     })
 });
-
-
 
 

@@ -22,11 +22,6 @@ class MainViewController: UIViewController {
         loadNext()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     @IBAction func submitButtonPressed() {
         if newDataTextField.text! == "" {
             return
