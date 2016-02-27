@@ -14,7 +14,18 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        decorateButton(facebookLoginButton,color: UIColor(red: 0.231, green: 0.349, blue: 0.596, alpha: 1.0) )
+      
+    }
+    @IBOutlet weak var facebookLoginButton: UIButton!
+    
+    private func decorateButton(button: UIButton, color: UIColor) {
+        
+        button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        button.layer.borderColor = color.CGColor
+        button.backgroundColor = UIColor(red: 0.231, green: 0.349, blue: 0.596, alpha: 1.0)
+        button.layer.borderWidth = 2
+        button.layer.cornerRadius = 7
     }
     
     @IBAction func facebookLoginButtonPressed() {

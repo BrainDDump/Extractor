@@ -4,6 +4,11 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Completely Nonsense.ttf">
+            <string>CompletelyNonsense</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="W9M-9S-eL6">
@@ -17,20 +22,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IyF-pB-u2U">
-                                <rect key="frame" x="272" y="285" width="56" height="30"/>
-                                <state key="normal" title="Login fb"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeBackGround" translatesAutoresizingMaskIntoConstraints="NO" id="3F4-Ar-lNh">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNQ-iU-uoC">
+                                <rect key="frame" x="160" y="458" width="283" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="37" id="2QT-e3-tNW"/>
+                                    <constraint firstAttribute="height" constant="45" id="tNa-bk-qXh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                <state key="normal" title=" Connect with Facebook" image="Facebook"/>
                                 <connections>
-                                    <action selector="facebookLoginButtonPressed" destination="k4Y-RX-s2v" eventType="touchUpInside" id="tbo-Eo-oeA"/>
+                                    <action selector="facebookLoginButtonPressed" destination="k4Y-RX-s2v" eventType="touchUpInside" id="9Eo-Yk-utS"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="EXTRACTOR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuy-gW-wOc">
+                                <rect key="frame" x="154" y="102" width="250" height="63"/>
+                                <fontDescription key="fontDescription" name="CompletelyNonsense" family="Completely Nonsense" pointSize="60"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.69993762797893933" green="0.93994540999999998" blue="0.84429626766231636" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="IyF-pB-u2U" firstAttribute="centerY" secondItem="ito-D6-mC3" secondAttribute="centerY" id="LMX-sz-DIp"/>
-                            <constraint firstItem="IyF-pB-u2U" firstAttribute="centerX" secondItem="ito-D6-mC3" secondAttribute="centerX" id="yi9-Nx-Yrx"/>
+                            <constraint firstItem="3F4-Ar-lNh" firstAttribute="leading" secondItem="ito-D6-mC3" secondAttribute="leading" id="A9i-iS-xh5"/>
+                            <constraint firstItem="uuy-gW-wOc" firstAttribute="centerX" secondItem="ito-D6-mC3" secondAttribute="centerX" id="Das-IN-lUJ"/>
+                            <constraint firstItem="GNQ-iU-uoC" firstAttribute="centerX" secondItem="ito-D6-mC3" secondAttribute="centerX" id="SEV-6p-t8U"/>
+                            <constraint firstItem="GNQ-iU-uoC" firstAttribute="top" secondItem="fxe-Ln-WYn" secondAttribute="bottom" constant="483" id="XeY-LH-zjS"/>
+                            <constraint firstItem="hFz-qq-r2C" firstAttribute="top" secondItem="3F4-Ar-lNh" secondAttribute="bottom" id="b2w-QZ-rJe"/>
+                            <constraint firstAttribute="trailing" secondItem="3F4-Ar-lNh" secondAttribute="trailing" id="gfN-1N-cdx"/>
+                            <constraint firstItem="3F4-Ar-lNh" firstAttribute="top" secondItem="ito-D6-mC3" secondAttribute="top" id="mUO-t5-TVG"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="facebookLoginButton" destination="GNQ-iU-uoC" id="fnX-TB-bw6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eYD-WP-Icz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -94,4 +122,8 @@
             <point key="canvasLocation" x="218" y="379"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Facebook" width="29" height="29"/>
+        <image name="HomeBackGround" width="1925" height="1280"/>
+    </resources>
 </document>
