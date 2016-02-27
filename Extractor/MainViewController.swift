@@ -46,10 +46,12 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func rejectButtonPressed() {
-        
+        ServerManager.reject({
+            (success) -> Void in
+            self.loadNext()
+        })
     }
     
-
     // MARK: - Helper methods
     func loadNext() {
         ServerManager.pull({

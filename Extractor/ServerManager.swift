@@ -45,7 +45,6 @@ class ServerManager {
         newNode.parent = parentNode
         newNode.child  = nil
         
-        newNode.status      = "active"
         newNode.rating      = 0
         newNode.childLocked = false
         newNode.depth       = parentNode != nil ? parentNode!.depth + 1 : 0
@@ -65,16 +64,23 @@ class ServerManager {
         })
     }
     
-    // MARK: - Test
-    class func getFreeNode() {
-        PFCloud.callFunctionInBackground("getFreeNode", withParameters: nil, block: {
-            (data, error) -> Void in
-            if error != nil {
-                print("getFreeNode was not successfull. Error: ", error)
-                return
-            }
-            
-            print(data)
-        })
+    class func reject(handler: SuccessResponceBlock) {
+        if parentNode == nil {
+            handler(success: true)
+            return
+        }
+        
+        let parameters = [
+            "objectId": parentNode!.objectId!
+        ]
+        PFCloud.callFunctionInBackground("reject", withParameters: parameters)
+        handler(success: true)
     }
+    
+    
+    
+    
+    
+    
+
 }

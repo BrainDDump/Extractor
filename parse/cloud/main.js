@@ -5,6 +5,7 @@ var getFreeNode = function(callback) {
     var query = new Parse.Query("Node");
     query.doesNotExist("child");
     query.notEqualTo("depth", kMaxDepth);
+    query.notEqualTo("childLocked", true);
     query.find({
         success: function(results) {
             if (results.length == 0) {
@@ -70,9 +71,33 @@ Parse.Cloud.define("pull", function(request, response) {
     })
 });
 
+Parse.Cloud.define("reject", function(request, response) {
+
+    var parentNodeId = request.objectId;
+    console.error("*** parentNodeId: ", parentNodeId);
+    var parentQuery = new Parse.Query("Node");
+    parentQuery.find(parentNodeId, {
+        success: function(parentNode) {
+            parentNode.increment("rating", -1);
+            parentNode.set("childLocked", false);
+            parentNode.save();
+
+            response.success();
+        },
+        error: function(error) {
+            response.error(error);
+        }
+    });
+});
+
 Parse.Cloud.afterSave("Node", function(request, response) {
     var newNode      = request.object;
     var parentNodeId = newNode.get("parent").id
+
+    if (typeof(parentNodeId) == "undefined") {
+        response.success("Success afterSave. Root node created");
+        return;
+    }
 
     var parentQuery = new Parse.Query("Node");
     parentQuery.get(parentNodeId, {
@@ -80,6 +105,8 @@ Parse.Cloud.afterSave("Node", function(request, response) {
             parentNode.set("child",       newNode);
             parentNode.set("childLocked", false);
             parentNode.save();
+
+            response.success("Success afterSave");
         },
         error: function(error) {
             response.error(error);
