@@ -54,7 +54,14 @@ Parse.Cloud.define("pull", function(request, response) {
                 var newArray = new Array(node);
 
                 node.set("childLocked", true);
-                response.success(ancestors.concat(newArray));
+                node.save({
+                    success: function() {
+                        response.success(ancestors.concat(newArray));
+                    },
+                    error: function(error) {
+                        response.error(error);
+                    }
+                })
             });
         },
         error: function(error) {

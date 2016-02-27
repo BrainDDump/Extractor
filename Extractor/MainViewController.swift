@@ -12,6 +12,9 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var ancestorDataTextView: UITextView!
     @IBOutlet weak var newDataTextField:     UITextField!
+    
+    @IBOutlet weak var rejectButton: UIButton!
+    @IBOutlet weak var submitButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,16 +28,27 @@ class MainViewController: UIViewController {
     }
 
     @IBAction func submitButtonPressed() {
+        if newDataTextField.text! == "" {
+            return
+        }
         
+        submitButton.enabled = false
         let newData = newDataTextField.text!
         ServerManager.push(newData, handler: {
             (success) -> Void in
             if success {
                 self.loadNext()
+                
+                self.submitButton.enabled = true
                 self.newDataTextField.text = ""
             }
         })
     }
+    
+    @IBAction func rejectButtonPressed() {
+        
+    }
+    
 
     // MARK: - Helper methods
     func loadNext() {

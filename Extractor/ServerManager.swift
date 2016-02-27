@@ -45,13 +45,10 @@ class ServerManager {
         newNode.parent = parentNode
         newNode.child  = nil
         
+        newNode.status      = "active"
+        newNode.rating      = 0
         newNode.childLocked = false
-        if let parentNode = parentNode {
-            newNode.depth = parentNode.depth + 1
-        } else {
-            newNode.depth = 0
-        }
-        
+        newNode.depth       = parentNode != nil ? parentNode!.depth + 1 : 0
         newNode.owner   = PFUser.currentUser()!
         newNode.content = data
         

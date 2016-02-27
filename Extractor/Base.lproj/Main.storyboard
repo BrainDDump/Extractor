@@ -38,8 +38,8 @@
                                     <action selector="facebookLoginButtonPressed" destination="k4Y-RX-s2v" eventType="touchUpInside" id="9Eo-Yk-utS"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="EXTRACTOR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuy-gW-wOc">
-                                <rect key="frame" x="154" y="102" width="250" height="63"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXTRACTOR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuy-gW-wOc">
+                                <rect key="frame" x="175.5" y="102" width="249.5" height="63"/>
                                 <fontDescription key="fontDescription" name="CompletelyNonsense" family="Completely Nonsense" pointSize="60"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -54,6 +54,7 @@
                             <constraint firstItem="hFz-qq-r2C" firstAttribute="top" secondItem="3F4-Ar-lNh" secondAttribute="bottom" id="b2w-QZ-rJe"/>
                             <constraint firstAttribute="trailing" secondItem="3F4-Ar-lNh" secondAttribute="trailing" id="gfN-1N-cdx"/>
                             <constraint firstItem="3F4-Ar-lNh" firstAttribute="top" secondItem="ito-D6-mC3" secondAttribute="top" id="mUO-t5-TVG"/>
+                            <constraint firstItem="3F4-Ar-lNh" firstAttribute="top" secondItem="uuy-gW-wOc" secondAttribute="bottom" constant="-165" id="xdy-0O-mru"/>
                         </constraints>
                     </view>
                     <connections>
@@ -95,26 +96,45 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBK-yq-Aag">
-                                <rect key="frame" x="282" y="285" width="36" height="30"/>
+                                <rect key="frame" x="328" y="278" width="114" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="8DZ-7Y-uFI"/>
+                                    <constraint firstAttribute="height" constant="43" id="Brx-rW-X9c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Send"/>
                                 <connections>
                                     <action selector="submitButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="ptQ-aI-mzN"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5oP-EI-Tdc">
+                                <rect key="frame" x="197" y="274" width="70" height="47"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Reject"/>
+                                <connections>
+                                    <action selector="rejectButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="gkW-SR-bOP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="5oP-EI-Tdc" firstAttribute="top" secondItem="BEj-Go-FX7" secondAttribute="bottom" constant="16" id="0vT-tA-NUT"/>
                             <constraint firstItem="BEj-Go-FX7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="48L-OY-hnT"/>
                             <constraint firstItem="1QM-1n-JEV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="4C0-dL-l2e"/>
                             <constraint firstItem="BEj-Go-FX7" firstAttribute="top" secondItem="1QM-1n-JEV" secondAttribute="bottom" constant="8" id="bvh-OB-a6c"/>
+                            <constraint firstItem="kBK-yq-Aag" firstAttribute="top" secondItem="BEj-Go-FX7" secondAttribute="bottom" constant="20" id="cH8-44-68b"/>
                             <constraint firstItem="1QM-1n-JEV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hHg-Ki-8qr"/>
-                            <constraint firstItem="kBK-yq-Aag" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jUG-lz-bs0"/>
                             <constraint firstItem="kBK-yq-Aag" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="jmz-QP-uhX"/>
+                            <constraint firstItem="kBK-yq-Aag" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="85" id="kAb-jS-6J0"/>
+                            <constraint firstItem="5oP-EI-Tdc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-2.5" id="kuq-rO-qvw"/>
+                            <constraint firstItem="kBK-yq-Aag" firstAttribute="leading" secondItem="5oP-EI-Tdc" secondAttribute="trailing" constant="61" id="ohg-UU-I8j"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="ancestorDataTextView" destination="1QM-1n-JEV" id="SEs-du-tMv"/>
                         <outlet property="newDataTextField" destination="BEj-Go-FX7" id="IPr-5T-2MV"/>
+                        <outlet property="rejectButton" destination="5oP-EI-Tdc" id="htj-1U-CeV"/>
+                        <outlet property="submitButton" destination="kBK-yq-Aag" id="VCP-us-PK7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

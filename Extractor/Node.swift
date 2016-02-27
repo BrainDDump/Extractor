@@ -13,6 +13,8 @@ class Node: PFObject, PFSubclassing {
     @NSManaged var parent: PFObject?
     @NSManaged var child:  PFObject?
     
+    @NSManaged var status:      String
+    @NSManaged var rating:      Int
     @NSManaged var childLocked: Bool
     @NSManaged var depth:       Int
     
