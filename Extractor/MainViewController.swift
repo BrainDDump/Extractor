@@ -25,6 +25,7 @@ class MainViewController: UIViewController {
 
     @IBAction func submitButtonPressed() {
         
+        ServerManager.getFreeNode()
     }
 
     

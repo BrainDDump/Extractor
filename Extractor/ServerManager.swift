@@ -13,13 +13,13 @@ class ServerManager {
     typealias TextResponseBlock = (error: NSError?, text: String?) -> Void
     typealias SuccessResponceBlock = (success: Bool) -> Void
 
-    private var parentNode: Node?
+    private static var parentNode: Node?
     
-    func pull(handler: TextResponseBlock) {
+    class func pull(handler: TextResponseBlock) {
         PFCloud.callFunctionInBackground("pull", withParameters: nil, block: {
             (data, error) -> Void in
             if error != nil {
-                print("Pull was not successfull. Error: ", error)
+                print("pull was not successfull. Error: ", error)
                 
                 handler(error: error, text: nil)
                 return
@@ -37,7 +37,7 @@ class ServerManager {
         })
     }
     
-    func push(data: String, handler: SuccessResponceBlock) {
+    class func push(data: String, handler: SuccessResponceBlock) {
         let newNode = Node()
         newNode.parent = parentNode
         newNode.child  = nil
@@ -52,13 +52,26 @@ class ServerManager {
         PFCloud.callFunctionInBackground("push", withParameters: parameters, block: {
             (data, error) -> Void in
             if error != nil {
-                print("Push was not successfull. Error: ", error)
+                print("push was not successfull. Error: ", error)
                 
                 handler(success: false)
                 return
             }
             
             handler(success: true)
+        })
+    }
+    
+    // MARK: - Test
+    class func getFreeNode() {
+        PFCloud.callFunctionInBackground("getFreeNode", withParameters: nil, block: {
+            (data, error) -> Void in
+            if error != nil {
+                print("getFreeNode was not successfull. Error: ", error)
+                return
+            }
+            
+            print(data)
         })
     }
 }
