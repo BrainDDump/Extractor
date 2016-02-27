@@ -26,6 +26,8 @@ class ServerManager {
             }
             
             if let nodes = data as? [Node] {
+                print(nodes)
+                
                 self.parentNode = nodes.last
                 
                 var textFromNodes = ""
@@ -42,6 +44,13 @@ class ServerManager {
         let newNode = Node()
         newNode.parent = parentNode
         newNode.child  = nil
+        
+        newNode.childLocked = false
+        if let parentNode = parentNode {
+            newNode.depth = parentNode.depth + 1
+        } else {
+            newNode.depth = 0
+        }
         
         newNode.owner   = PFUser.currentUser()!
         newNode.content = data

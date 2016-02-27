@@ -214,6 +214,7 @@
 				TargetAttributes = {
 					ED59AE681C819D98003C09B9 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = A55978949T;
 					};
 					ED59AE7C1C819D98003C09B9 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -445,10 +446,13 @@
 			baseConfigurationReference = 3132F5A810ACC0F3FB133E03 /* Pods-Extractor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Extractor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.BrainDump.Extractor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -457,10 +461,13 @@
 			baseConfigurationReference = 6C57728E8842310681303762 /* Pods-Extractor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Extractor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.BrainDump.Extractor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

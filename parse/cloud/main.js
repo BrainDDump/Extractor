@@ -1,12 +1,17 @@
 
-// Use Parse.Cloud.define to define as many cloud functions as you want.
-// For example:
+const kMaxDepth = 5;
 
 var getFreeNode = function(callback) {
     var query = new Parse.Query("Node");
     query.doesNotExist("child");
+    query.notEqualTo("depth", kMaxDepth);
     query.find({
         success: function(results) {
+            if (results.length == 0) {
+                callback.success(null);
+                return;
+            }
+
             var randomNode = results[Math.floor(Math.random()* results.length)];
 
             callback.success(randomNode);
@@ -40,9 +45,15 @@ var getAncestors = function(node, callback) {
 Parse.Cloud.define("pull", function(request, response) {
 	getFreeNode({
         success: function(node) {
-            var newArray = new Array(node);
+            if (node == null) {
+                response.success(new Array());
+                return;
+            }
 
             getAncestors(node, function(ancestors) {
+                var newArray = new Array(node);
+
+                node.set("childLocked", true);
                 response.success(ancestors.concat(newArray));
             });
         },
@@ -53,30 +64,21 @@ Parse.Cloud.define("pull", function(request, response) {
 });
 
 Parse.Cloud.afterSave("Node", function(request, response) {
-    var newNode = request.object;
+    var newNode      = request.object;
     var parentNodeId = newNode.get("parent").id
 
     var parentQuery = new Parse.Query("Node");
     parentQuery.get(parentNodeId, {
         success: function(parentNode) {
-            parentNode.set("child", newNode);
+            parentNode.set("child",       newNode);
+            parentNode.set("childLocked", false);
             parentNode.save();
         },
         error: function(error) {
             response.error(error);
         }
     })
-
-    parentNode.set("child", newArray);
-    parentNode.save();
-    newNode.save();
 });
-
-
-
-
-
-
 
 
 
