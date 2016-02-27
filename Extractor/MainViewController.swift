@@ -9,6 +9,9 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
+    @IBOutlet weak var ancestorDataTextView: UITextView!
+    @IBOutlet weak var newDataTextField:     UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,10 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func submitButtonPressed() {
+        
+    }
 
+    
 }
 

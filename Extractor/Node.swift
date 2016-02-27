@@ -7,3 +7,25 @@
 //
 
 import Foundation
+import Parse
+
+class Node: PFObject, PFSubclassing {
+    @NSManaged var parent: PFObject?
+    @NSManaged var child:  PFObject?
+    
+    @NSManaged var owner:   PFUser
+    @NSManaged var content: String
+    
+    override class func initialize() {
+        struct Static {
+            static var onceToken: dispatch_once_t = 0;
+        }
+        dispatch_once(&Static.onceToken, {
+            self.registerSubclass()
+        })
+    }
+    
+    static func parseClassName() -> String {
+        return "Node"
+    }
+}
