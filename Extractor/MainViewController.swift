@@ -19,7 +19,13 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureView()
         loadNext()
+    }
+    
+    func configureView() {
+        self.submitButton.enabled = false
+        self.rejectButton.enabled = false
     }
 
     @IBAction func submitButtonPressed() {
@@ -34,13 +40,15 @@ class MainViewController: UIViewController {
             if success {
                 self.loadNext()
                 
-                self.submitButton.enabled = true
+                self.enableButtons()
                 self.newDataTextField.text = ""
             }
         })
     }
     
     @IBAction func rejectButtonPressed() {
+        disableButtons()
+        
         ServerManager.reject({
             (success) -> Void in
             self.loadNext()
@@ -49,6 +57,8 @@ class MainViewController: UIViewController {
     
     // MARK: - Helper methods
     func loadNext() {
+        disableButtons()
+        
         ServerManager.pull({
             (error, text) -> Void in
             if error != nil {
@@ -57,7 +67,18 @@ class MainViewController: UIViewController {
             }
             
             self.ancestorDataTextView.text = text
+            self.enableButtons()
         })
+    }
+    
+    func enableButtons() {
+        submitButton.enabled = true
+        rejectButton.enabled = true
+    }
+    
+    func disableButtons() {
+        submitButton.enabled = false
+        rejectButton.enabled = false
     }
     
 }

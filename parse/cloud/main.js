@@ -108,7 +108,7 @@ Parse.Cloud.afterSave("Node", function(request, response) {
     var parentQuery = new Parse.Query("Node");
     parentQuery.get(parentNodeId, {
         success: function(parentNode) {
-            parentNode.add("children", newNode.id);
+            parentNode.addUnique("children", newNode.id);
             parentNode.save({
                 success: function() {
                     response.success();
