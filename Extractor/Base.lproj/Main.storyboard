@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeBackGround" translatesAutoresizingMaskIntoConstraints="NO" id="3F4-Ar-lNh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundTest1" translatesAutoresizingMaskIntoConstraints="NO" id="3F4-Ar-lNh">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNQ-iU-uoC">
@@ -123,7 +123,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BackgroundTest1" width="2300" height="1500"/>
         <image name="Facebook" width="29" height="29"/>
-        <image name="HomeBackGround" width="1925" height="1280"/>
     </resources>
 </document>
