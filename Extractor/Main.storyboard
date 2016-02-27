@@ -205,7 +205,16 @@
         <!--Settings-->
         <scene sceneID="6Iv-kz-ToM">
             <objects>
-                <viewController title="Settings" id="VbG-L9-VRz" sceneMemberID="viewController"/>
+                <viewController title="Settings" id="VbG-L9-VRz" customClass="SettingsViewController" customModule="Extractor" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="pMp-qy-mfu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </tableView>
+                    <connections>
+                        <outlet property="settingsTable" destination="pMp-qy-mfu" id="YnP-aN-rMq"/>
+                    </connections>
+                </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o0L-5p-CeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="902" y="1085"/>
