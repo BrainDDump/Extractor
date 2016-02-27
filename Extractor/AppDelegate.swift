@@ -97,7 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let loginVC = storyboard.instantiateInitialViewController()
             window?.rootViewController = loginVC
         } else {
-            let mainVC = storyboard.instantiateViewControllerWithIdentifier("MainVC")
+            let mainVC = storyboard.instantiateViewControllerWithIdentifier("MainNavigationVC")
             window?.rootViewController = mainVC
         }
     }
