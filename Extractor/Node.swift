@@ -13,6 +13,8 @@ class Node: PFObject, PFSubclassing {
     @NSManaged var parent: PFObject?
     @NSManaged var child:  PFObject?
     
+    @NSManaged var depth: Int
+    
     @NSManaged var owner:   PFUser
     @NSManaged var content: String
     

@@ -15,7 +15,8 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        loadNext()
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,9 +26,28 @@ class MainViewController: UIViewController {
 
     @IBAction func submitButtonPressed() {
         
-        ServerManager.getFreeNode()
+        let newData = newDataTextField.text!
+        ServerManager.push(newData, handler: {
+            (success) -> Void in
+            if success {
+                self.loadNext()
+                self.newDataTextField.text = ""
+            }
+        })
     }
 
+    // MARK: - Helper methods
+    func loadNext() {
+        ServerManager.pull({
+            (error, text) -> Void in
+            if error != nil {
+                print("Error occured while pulling data from server. Error: ", error)
+                return
+            }
+            
+            self.ancestorDataTextView.text = text
+        })
+    }
     
 }
 

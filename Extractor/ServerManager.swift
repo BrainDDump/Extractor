@@ -25,15 +25,16 @@ class ServerManager {
                 return
             }
             
-            let nodes = data as! [Node]
-            self.parentNode = nodes.last
-            
-            var textFromNodes = ""
-            for node in nodes {
-                textFromNodes += node.content
+            if let nodes = data as? [Node] {
+                self.parentNode = nodes.last
+                
+                var textFromNodes = ""
+                for node in nodes {
+                    textFromNodes += node.content + " "
+                }
+                
+                handler(error: nil, text: textFromNodes)
             }
-            
-            handler(error: nil, text: textFromNodes)
         })
     }
     
@@ -45,18 +46,14 @@ class ServerManager {
         newNode.owner   = PFUser.currentUser()!
         newNode.content = data
         
-        let parameters: [NSObject: AnyObject] = [
-            "parentNode": parentNode != nil ? parentNode! : "none",
-            "newNode":    newNode
-        ]
-        PFCloud.callFunctionInBackground("push", withParameters: parameters, block: {
-            (data, error) -> Void in
+        newNode.saveInBackgroundWithBlock({
+            (success, error) -> Void in
             if error != nil {
-                print("push was not successfull. Error: ", error)
-                
-                handler(success: false)
+                print("Error occured while saving new node. Error: ", error)
                 return
             }
+            
+            print("Node saved: ", newNode)
             
             handler(success: true)
         })
