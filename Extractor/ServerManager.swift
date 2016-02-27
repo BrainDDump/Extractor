@@ -42,12 +42,14 @@ class ServerManager {
     
     class func push(data: String, handler: SuccessResponceBlock) {
         let newNode = Node()
-        newNode.parent = parentNode
-        newNode.child  = nil
-        
-        newNode.rating      = 0
-        newNode.childLocked = false
+        newNode.parent   = parentNode
+        newNode.children = []
         newNode.depth       = parentNode != nil ? parentNode!.depth + 1 : 0
+        
+        newNode.rating            = 0
+        newNode.state             = "pending"
+        newNode.childrenInProcess = 0
+
         newNode.owner   = PFUser.currentUser()!
         newNode.content = data
         

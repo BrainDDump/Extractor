@@ -10,12 +10,13 @@ import Foundation
 import Parse
 
 class Node: PFObject, PFSubclassing {
-    @NSManaged var parent: PFObject?
-    @NSManaged var child:  PFObject?
+    @NSManaged var parent:   PFObject?
+    @NSManaged var children: Array<String>?
+    @NSManaged var depth:    Int
     
-    @NSManaged var rating:      Int
-    @NSManaged var childLocked: Bool
-    @NSManaged var depth:       Int
+    @NSManaged var rating:            Int
+    @NSManaged var state:             String
+    @NSManaged var childrenInProcess: Int
     
     @NSManaged var owner:   PFUser
     @NSManaged var content: String

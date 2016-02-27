@@ -1,11 +1,12 @@
 
-const kMaxDepth = 5;
+const kMaxDepth    = 5;
+const kMaxChildren = 2;
 
 var getFreeNode = function(callback) {
     var query = new Parse.Query("Node");
-    query.doesNotExist("child");
-    query.notEqualTo("depth", kMaxDepth);
-    query.notEqualTo("childLocked", true);
+    query.
+    query.notEqualTo("depth",           kMaxDepth);
+    query.lessThan("childrenInProcess", kMaxChildren);
     query.greaterThan("rating", -2);
     query.find({
         success: function(results) {
