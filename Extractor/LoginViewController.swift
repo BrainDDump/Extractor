@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ParseFacebookUtilsV4
 
 class LoginViewController: UIViewController {
 
@@ -15,21 +16,22 @@ class LoginViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func facebookLoginButtonPressed() {
+        let permissions = ["public_profile"]
+        PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions, block: {
+            (user, error) -> Void in
+            if error != nil {
+                print("Error occured while logging in with facebook. Error: ", error)
+                return
+            }
+            
+            print(user)
+            
+            let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDel.tryToLoadMainApp()
+        })
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

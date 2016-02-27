@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		BB36135C45E29B5763D7BFA4 /* Pods_Extractor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3EBEEA72BE7F010681DD76C /* Pods_Extractor.framework */; };
 		ED59AE6D1C819D98003C09B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED59AE6C1C819D98003C09B9 /* AppDelegate.swift */; };
-		ED59AE6F1C819D98003C09B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED59AE6E1C819D98003C09B9 /* ViewController.swift */; };
+		ED59AE6F1C819D98003C09B9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED59AE6E1C819D98003C09B9 /* MainViewController.swift */; };
 		ED59AE721C819D98003C09B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED59AE701C819D98003C09B9 /* Main.storyboard */; };
 		ED59AE741C819D98003C09B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED59AE731C819D98003C09B9 /* Assets.xcassets */; };
 		ED59AE771C819D98003C09B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED59AE751C819D98003C09B9 /* LaunchScreen.storyboard */; };
 		ED59AE821C819D98003C09B9 /* ExtractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED59AE811C819D98003C09B9 /* ExtractorTests.swift */; };
+		ED59AE911C81A59C003C09B9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED59AE901C81A59C003C09B9 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +33,7 @@
 		D3EBEEA72BE7F010681DD76C /* Pods_Extractor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Extractor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED59AE691C819D98003C09B9 /* Extractor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Extractor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED59AE6C1C819D98003C09B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ED59AE6E1C819D98003C09B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ED59AE6E1C819D98003C09B9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		ED59AE711C819D98003C09B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED59AE731C819D98003C09B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED59AE761C819D98003C09B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +41,7 @@
 		ED59AE7D1C819D98003C09B9 /* ExtractorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExtractorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED59AE811C819D98003C09B9 /* ExtractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractorTests.swift; sourceTree = "<group>"; };
 		ED59AE831C819D98003C09B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED59AE901C81A59C003C09B9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,12 +103,10 @@
 		ED59AE6B1C819D98003C09B9 /* Extractor */ = {
 			isa = PBXGroup;
 			children = (
-				ED59AE6C1C819D98003C09B9 /* AppDelegate.swift */,
-				ED59AE6E1C819D98003C09B9 /* ViewController.swift */,
-				ED59AE701C819D98003C09B9 /* Main.storyboard */,
-				ED59AE731C819D98003C09B9 /* Assets.xcassets */,
-				ED59AE751C819D98003C09B9 /* LaunchScreen.storyboard */,
-				ED59AE781C819D98003C09B9 /* Info.plist */,
+				ED59AE8C1C81A07E003C09B9 /* Data Model */,
+				ED59AE8F1C81A0C7003C09B9 /* View Controllers */,
+				ED59AE8E1C81A0AA003C09B9 /* Views */,
+				ED59AE8D1C81A085003C09B9 /* Support Files */,
 			);
 			path = Extractor;
 			sourceTree = "<group>";
@@ -118,6 +118,41 @@
 				ED59AE831C819D98003C09B9 /* Info.plist */,
 			);
 			path = ExtractorTests;
+			sourceTree = "<group>";
+		};
+		ED59AE8C1C81A07E003C09B9 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Data Model";
+			sourceTree = "<group>";
+		};
+		ED59AE8D1C81A085003C09B9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				ED59AE731C819D98003C09B9 /* Assets.xcassets */,
+				ED59AE6C1C819D98003C09B9 /* AppDelegate.swift */,
+				ED59AE781C819D98003C09B9 /* Info.plist */,
+			);
+			name = "Support Files";
+			sourceTree = "<group>";
+		};
+		ED59AE8E1C81A0AA003C09B9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ED59AE701C819D98003C09B9 /* Main.storyboard */,
+				ED59AE751C819D98003C09B9 /* LaunchScreen.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		ED59AE8F1C81A0C7003C09B9 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ED59AE6E1C819D98003C09B9 /* MainViewController.swift */,
+				ED59AE901C81A59C003C09B9 /* LoginViewController.swift */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,7 +307,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED59AE6F1C819D98003C09B9 /* ViewController.swift in Sources */,
+				ED59AE911C81A59C003C09B9 /* LoginViewController.swift in Sources */,
+				ED59AE6F1C819D98003C09B9 /* MainViewController.swift in Sources */,
 				ED59AE6D1C819D98003C09B9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
