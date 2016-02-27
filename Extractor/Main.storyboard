@@ -26,8 +26,28 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundTest1" translatesAutoresizingMaskIntoConstraints="NO" id="3F4-Ar-lNh">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNQ-iU-uoC">
-                                <rect key="frame" x="159" y="503" width="283" height="45"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXTRACTOR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuy-gW-wOc">
+                                <rect key="frame" x="175.5" y="102" width="249.5" height="63"/>
+                                <fontDescription key="fontDescription" name="CompletelyNonsense" family="Completely Nonsense" pointSize="60"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvz-Wq-uo5">
+                                <rect key="frame" x="160" y="548" width="280" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="R4k-6i-FMd"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="37" id="Wnw-tK-cPE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <inset key="contentEdgeInsets" minX="30" minY="8" maxX="30" maxY="8"/>
+                                <state key="normal" title=" Connect with Email" image="Email"/>
+                                <connections>
+                                    <action selector="emailLoginButtonPressed:" destination="k4Y-RX-s2v" eventType="touchUpInside" id="D0g-dR-NIy"/>
+                                    <action selector="facebookLoginButtonPressed" destination="k4Y-RX-s2v" eventType="touchUpInside" id="cbY-rr-Mdo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNQ-iU-uoC">
+                                <rect key="frame" x="159" y="494" width="283" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="37" id="2QT-e3-tNW"/>
                                     <constraint firstAttribute="height" constant="45" id="tNa-bk-qXh"/>
@@ -39,19 +59,14 @@
                                     <action selector="facebookLoginButtonPressed" destination="k4Y-RX-s2v" eventType="touchUpInside" id="9Eo-Yk-utS"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXTRACTOR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuy-gW-wOc">
-                                <rect key="frame" x="175" y="102" width="250" height="63"/>
-                                <fontDescription key="fontDescription" name="CompletelyNonsense" family="Completely Nonsense" pointSize="60"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.69993762797893933" green="0.93994540999999998" blue="0.84429626766231636" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="3F4-Ar-lNh" firstAttribute="leading" secondItem="ito-D6-mC3" secondAttribute="leading" id="A9i-iS-xh5"/>
                             <constraint firstItem="uuy-gW-wOc" firstAttribute="centerX" secondItem="ito-D6-mC3" secondAttribute="centerX" id="Das-IN-lUJ"/>
                             <constraint firstItem="GNQ-iU-uoC" firstAttribute="centerX" secondItem="ito-D6-mC3" secondAttribute="centerX" id="SEV-6p-t8U"/>
-                            <constraint firstItem="GNQ-iU-uoC" firstAttribute="top" secondItem="fxe-Ln-WYn" secondAttribute="bottom" constant="483" id="XeY-LH-zjS"/>
+                            <constraint firstItem="Bvz-Wq-uo5" firstAttribute="centerX" secondItem="3F4-Ar-lNh" secondAttribute="centerX" id="SQp-Q0-jhz"/>
+                            <constraint firstItem="GNQ-iU-uoC" firstAttribute="top" secondItem="fxe-Ln-WYn" secondAttribute="bottom" constant="465" id="XeY-LH-zjS"/>
                             <constraint firstItem="hFz-qq-r2C" firstAttribute="top" secondItem="3F4-Ar-lNh" secondAttribute="bottom" id="b2w-QZ-rJe"/>
                             <constraint firstAttribute="trailing" secondItem="3F4-Ar-lNh" secondAttribute="trailing" id="gfN-1N-cdx"/>
                             <constraint firstItem="3F4-Ar-lNh" firstAttribute="top" secondItem="ito-D6-mC3" secondAttribute="top" id="mUO-t5-TVG"/>
@@ -59,6 +74,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emailSignUpButton" destination="Bvz-Wq-uo5" id="IYH-Vy-MKn"/>
                         <outlet property="facebookLoginButton" destination="GNQ-iU-uoC" id="fnX-TB-bw6"/>
                     </connections>
                 </viewController>
@@ -344,6 +360,7 @@
     </scenes>
     <resources>
         <image name="BackgroundTest1" width="2300" height="1500"/>
+        <image name="Email" width="25" height="25"/>
         <image name="Facebook" width="29" height="29"/>
     </resources>
 </document>
