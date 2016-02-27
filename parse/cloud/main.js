@@ -6,6 +6,7 @@ var getFreeNode = function(callback) {
     query.doesNotExist("child");
     query.notEqualTo("depth", kMaxDepth);
     query.notEqualTo("childLocked", true);
+    query.greaterThan("rating", -2);
     query.find({
         success: function(results) {
             if (results.length == 0) {
@@ -73,10 +74,10 @@ Parse.Cloud.define("pull", function(request, response) {
 
 Parse.Cloud.define("reject", function(request, response) {
 
-    var parentNodeId = request.objectId;
-    console.error("*** parentNodeId: ", parentNodeId);
+    var parentNodeId = request.params.objectId;
+    console.error(parentNodeId);
     var parentQuery = new Parse.Query("Node");
-    parentQuery.find(parentNodeId, {
+    parentQuery.get(parentNodeId, {
         success: function(parentNode) {
             parentNode.increment("rating", -1);
             parentNode.set("childLocked", false);
