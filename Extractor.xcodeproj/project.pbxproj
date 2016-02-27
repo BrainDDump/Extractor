@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53DD587A1C821CA300117BFE /* Completely Nonsense.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53DD58791C821CA300117BFE /* Completely Nonsense.ttf */; };
 		BB36135C45E29B5763D7BFA4 /* Pods_Extractor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3EBEEA72BE7F010681DD76C /* Pods_Extractor.framework */; };
 		ED59AE6D1C819D98003C09B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED59AE6C1C819D98003C09B9 /* AppDelegate.swift */; };
 		ED59AE6F1C819D98003C09B9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED59AE6E1C819D98003C09B9 /* MainViewController.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		3132F5A810ACC0F3FB133E03 /* Pods-Extractor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Extractor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Extractor/Pods-Extractor.debug.xcconfig"; sourceTree = "<group>"; };
+		53DD58791C821CA300117BFE /* Completely Nonsense.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Completely Nonsense.ttf"; path = "../../../Downloads/completely_nonsense/Completely Nonsense.ttf"; sourceTree = "<group>"; };
 		6C57728E8842310681303762 /* Pods-Extractor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Extractor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Extractor/Pods-Extractor.release.xcconfig"; sourceTree = "<group>"; };
 		D3EBEEA72BE7F010681DD76C /* Pods_Extractor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Extractor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED59AE691C819D98003C09B9 /* Extractor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Extractor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +137,7 @@
 		ED59AE8D1C81A085003C09B9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				53DD58791C821CA300117BFE /* Completely Nonsense.ttf */,
 				ED59AE941C81BBAB003C09B9 /* ServerManager.swift */,
 				ED59AE731C819D98003C09B9 /* Assets.xcassets */,
 				ED59AE6C1C819D98003C09B9 /* AppDelegate.swift */,
@@ -248,6 +251,7 @@
 			files = (
 				ED59AE771C819D98003C09B9 /* LaunchScreen.storyboard in Resources */,
 				ED59AE741C819D98003C09B9 /* Assets.xcassets in Resources */,
+				53DD587A1C821CA300117BFE /* Completely Nonsense.ttf in Resources */,
 				ED59AE721C819D98003C09B9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
