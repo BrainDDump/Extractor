@@ -80,6 +80,8 @@
 	<array>
 		<string>Completely Nonsense.ttf</string>
 	</array>
+	<key>UILaunchImageFile</key>
+	<string>LaunchScreen.storyboard</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
