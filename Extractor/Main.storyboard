@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -250,7 +251,7 @@
             </objects>
             <point key="canvasLocation" x="972" y="-362"/>
         </scene>
-        <!--exTree-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Extractor" customModuleProvider="target" sceneMemberID="viewController">
@@ -262,8 +263,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QM8-FI-JSl">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <connections>
+                                    <segue destination="bJQ-pZ-PP8" kind="embed" id="ZXC-z8-KV5"/>
+                                </connections>
+                            </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5oP-EI-Tdc">
                                 <rect key="frame" x="119" y="455" width="49" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5oP-EI-Tdc" secondAttribute="height" multiplier="7:6" id="rFC-sb-TT0"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Skip"/>
                                 <connections>
@@ -289,43 +299,59 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No story to add on to? Start a new one! Or don't..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxe-Fj-QtA">
-                                <rect key="frame" x="64" y="87" width="282" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBK-yq-Aag">
                                 <rect key="frame" x="433" y="455" width="46" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="kBK-yq-Aag" secondAttribute="height" multiplier="23:21" id="r4N-Wa-cBS"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Add"/>
                                 <connections>
                                     <action selector="submitButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="ptQ-aI-mzN"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No story to add on to? Start a new one! Or don't..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxe-Fj-QtA">
+                                <rect key="frame" x="159" y="87" width="282" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="kBK-yq-Aag" secondAttribute="trailing" constant="101" id="6rl-Lk-Iaf"/>
-                            <constraint firstItem="BEj-Go-FX7" firstAttribute="leading" secondItem="Kxe-Fj-QtA" secondAttribute="leading" id="70n-ez-wLb"/>
+                            <constraint firstItem="5oP-EI-Tdc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="99" id="BdX-1F-WYr"/>
+                            <constraint firstItem="Kxe-Fj-QtA" firstAttribute="centerX" secondItem="1QM-1n-JEV" secondAttribute="centerX" id="Edb-Uh-kn7"/>
                             <constraint firstItem="BEj-Go-FX7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GHX-F3-SUy"/>
                             <constraint firstItem="BEj-Go-FX7" firstAttribute="top" secondItem="1QM-1n-JEV" secondAttribute="bottom" constant="54" id="Ihg-a8-wp6"/>
-                            <constraint firstItem="5oP-EI-Tdc" firstAttribute="baseline" secondItem="kBK-yq-Aag" secondAttribute="baseline" id="Nm6-o4-4pa"/>
+                            <constraint firstItem="Kxe-Fj-QtA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="23" id="NyU-36-Hyd"/>
                             <constraint firstItem="BEj-Go-FX7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="44" id="Srd-Os-tC0"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5oP-EI-Tdc" secondAttribute="bottom" constant="103" id="TeE-Zd-Kuv"/>
-                            <constraint firstItem="5oP-EI-Tdc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="99" id="d8p-UG-XsH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QM8-FI-JSl" secondAttribute="trailing" constant="-20" id="UNz-27-wPD"/>
+                            <constraint firstItem="5oP-EI-Tdc" firstAttribute="top" secondItem="BEj-Go-FX7" secondAttribute="bottom" constant="51" id="Vzc-RK-jSc"/>
+                            <constraint firstAttribute="trailing" secondItem="kBK-yq-Aag" secondAttribute="trailing" constant="121" id="b2R-8h-C2c"/>
+                            <constraint firstItem="QM8-FI-JSl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="bkE-H9-roA"/>
+                            <constraint firstItem="1QM-1n-JEV" firstAttribute="top" secondItem="Kxe-Fj-QtA" secondAttribute="bottom" constant="8" symbolic="YES" id="c0h-Qs-i2U"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QM8-FI-JSl" secondAttribute="bottom" id="egf-vN-2Dy"/>
                             <constraint firstItem="BEj-Go-FX7" firstAttribute="trailing" secondItem="1QM-1n-JEV" secondAttribute="trailing" id="gQx-jF-b9X"/>
-                            <constraint firstItem="1QM-1n-JEV" firstAttribute="top" secondItem="Kxe-Fj-QtA" secondAttribute="bottom" constant="8" symbolic="YES" id="thM-sm-6EQ"/>
-                            <constraint firstItem="Kxe-Fj-QtA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="23" id="xho-dp-GJ1"/>
+                            <constraint firstItem="5oP-EI-Tdc" firstAttribute="baseline" secondItem="kBK-yq-Aag" secondAttribute="baseline" id="ngf-aV-Zv4"/>
+                            <constraint firstItem="QM8-FI-JSl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="pL0-Ze-PHg"/>
                             <constraint firstItem="BEj-Go-FX7" firstAttribute="leading" secondItem="1QM-1n-JEV" secondAttribute="leading" id="xmT-JU-z39"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="exTree" id="dz1-PZ-kUy">
+                    <navigationItem key="navigationItem" id="dz1-PZ-kUy">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="Zlr-3N-gbT">
                             <connections>
                                 <segue destination="VbG-L9-VRz" kind="show" id="QsJ-c9-hKw"/>
                             </connections>
                         </barButtonItem>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="71p-z5-a34">
+                            <rect key="frame" x="202" y="7" width="197" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Home"/>
+                                <segment title="Leaderboards"/>
+                            </segments>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" title="History" id="Tiy-78-mqn">
                             <connections>
                                 <segue destination="iOS-bm-Ifc" kind="show" id="0Wg-Lz-Aoe"/>
@@ -335,6 +361,7 @@
                     <connections>
                         <outlet property="ancestorDataTextView" destination="1QM-1n-JEV" id="SEs-du-tMv"/>
                         <outlet property="emptyNotice" destination="Kxe-Fj-QtA" id="GVE-ry-fEe"/>
+                        <outlet property="leaderBoard" destination="QM8-FI-JSl" id="N5b-L6-HQH"/>
                         <outlet property="newDataTextField" destination="BEj-Go-FX7" id="IPr-5T-2MV"/>
                         <outlet property="rejectButton" destination="5oP-EI-Tdc" id="htj-1U-CeV"/>
                         <outlet property="submitButton" destination="kBK-yq-Aag" id="VCP-us-PK7"/>
@@ -370,7 +397,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sD2-RH-luJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1630" y="339"/>
+            <point key="canvasLocation" x="1838" y="-189"/>
         </scene>
         <!--Settings-->
         <scene sceneID="6Iv-kz-ToM">
@@ -536,6 +563,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="luK-cV-3JU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="218" y="333"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Aif-dd-MZd">
+            <objects>
+                <viewController id="bJQ-pZ-PP8" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6oN-Pa-S9e"/>
+                        <viewControllerLayoutGuide type="bottom" id="hrx-mH-8Ov"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bjG-ES-E5R">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Stories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVS-0l-1Q4">
+                                <rect key="frame" x="257" y="47" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AwV-aQ-AZM">
+                                <rect key="frame" x="64" y="110" width="472" height="426"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="AwV-aQ-AZM" firstAttribute="top" secondItem="zVS-0l-1Q4" secondAttribute="bottom" constant="42" id="9WU-lY-cZg"/>
+                            <constraint firstItem="zVS-0l-1Q4" firstAttribute="centerX" secondItem="bjG-ES-E5R" secondAttribute="centerX" id="W7K-3P-2gf"/>
+                            <constraint firstItem="AwV-aQ-AZM" firstAttribute="centerX" secondItem="zVS-0l-1Q4" secondAttribute="centerX" id="WMt-q5-Sts"/>
+                            <constraint firstItem="AwV-aQ-AZM" firstAttribute="bottom" secondItem="hrx-mH-8Ov" secondAttribute="top" id="jEW-VT-aTX"/>
+                            <constraint firstItem="AwV-aQ-AZM" firstAttribute="leading" secondItem="bjG-ES-E5R" secondAttribute="leadingMargin" constant="44" id="l0l-Om-GKw"/>
+                            <constraint firstItem="zVS-0l-1Q4" firstAttribute="top" secondItem="6oN-Pa-S9e" secondAttribute="bottom" constant="47" id="x8R-Ae-fCk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Stf-hn-WfN">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="R55-rz-Kyu"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="ccv-Um-hUV">
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Home"/>
+                                <segment title="Leaderboards"/>
+                            </segments>
+                        </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" title="History" id="8ec-bS-EIz"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2v6-rq-feh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1774" y="681"/>
         </scene>
     </scenes>
     <resources>
