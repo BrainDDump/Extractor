@@ -14,7 +14,7 @@ Array.prototype.getUnique = function(){
 
 // Configurations
 const kMaxDepth    = 3;
-const kMaxChildren = 1;
+const kMaxChildren = 2;
 
 const kTwillioCred = {
     PHONE_NUMBER: "8055002188",

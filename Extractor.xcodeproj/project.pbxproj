@@ -23,6 +23,7 @@
 		ED59AE911C81A59C003C09B9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED59AE901C81A59C003C09B9 /* LoginViewController.swift */; };
 		ED59AE931C81B1AC003C09B9 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED59AE921C81B1AC003C09B9 /* Node.swift */; };
 		ED59AE951C81BBAB003C09B9 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED59AE941C81BBAB003C09B9 /* ServerManager.swift */; };
+		ED88398A1C83457800F0B8D8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8839891C83457800F0B8D8 /* SignUpViewController.swift */; };
 		ED9047A41C82600800665B90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9047A31C82600800665B90 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		ED59AE901C81A59C003C09B9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ED59AE921C81B1AC003C09B9 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		ED59AE941C81BBAB003C09B9 /* ServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
+		ED8839891C83457800F0B8D8 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		ED9047A31C82600800665B90 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,12 +176,21 @@
 		ED59AE8F1C81A0C7003C09B9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				ED8839881C8343C900F0B8D8 /* LoginApp */,
 				ED59AE6E1C819D98003C09B9 /* MainViewController.swift */,
-				ED59AE901C81A59C003C09B9 /* LoginViewController.swift */,
 				530266B21C826AFB0044FE24 /* SettingsViewController.swift */,
 				ED0E64FB1C83058F00BEE8BD /* TimelineViewController.swift */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		ED8839881C8343C900F0B8D8 /* LoginApp */ = {
+			isa = PBXGroup;
+			children = (
+				ED59AE901C81A59C003C09B9 /* LoginViewController.swift */,
+				ED8839891C83457800F0B8D8 /* SignUpViewController.swift */,
+			);
+			name = LoginApp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +353,7 @@
 				ED59AE911C81A59C003C09B9 /* LoginViewController.swift in Sources */,
 				ED0E64FC1C83058F00BEE8BD /* TimelineViewController.swift in Sources */,
 				ED59AE6F1C819D98003C09B9 /* MainViewController.swift in Sources */,
+				ED88398A1C83457800F0B8D8 /* SignUpViewController.swift in Sources */,
 				ED0E64FA1C82E31F00BEE8BD /* User.swift in Sources */,
 				ED59AE6D1C819D98003C09B9 /* AppDelegate.swift in Sources */,
 				ED59AE931C81B1AC003C09B9 /* Node.swift in Sources */,

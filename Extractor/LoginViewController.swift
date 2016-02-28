@@ -23,17 +23,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
-    @IBAction func unwindToLogin(sender: UIStoryboardSegue){
-    }
-    
     @IBOutlet weak var facebookLoginButton: UIButton!
-    
     @IBOutlet weak var emailSignUpButton: UIButton!
     
- 
+    
     private func decorateButton(button: UIButton, color: UIColor) {
         
-        if(button==facebookLoginButton){
+        if (button == facebookLoginButton) {
             button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         } else {
             button.setTitleColor(UIColor(red: 0.961, green: 0.231, blue: 0.231, alpha: 1), forState: UIControlState.Normal)
@@ -77,8 +73,24 @@ class LoginViewController: UIViewController {
         })
     }
     
-    func updateCurrentUserInfoFromFacebook() {
+    @IBAction func loginButtonPressed(sender: AnyObject) {
+        let email    = usernameField.text!
+        let password = passwordField.text!
         
+        let user = User()
+        user.username = email
+        user.email    = email
+        user.password = password
+        
+        user.signUpInBackgroundWithBlock {
+            (success, error) -> Void in
+            
+            let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+            appDel.tryToLoadMainApp()
+        }
+    }
+    
+    func updateCurrentUserInfoFromFacebook() {
         let currentUser = PFUser.currentUser() as! User
         
         let requestParameters = ["fields": "id, name"]
