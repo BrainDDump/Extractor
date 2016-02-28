@@ -18,8 +18,14 @@ class LoginViewController: UIViewController {
         decorateButton(emailSignUpButton, color: UIColor(red: 0.333, green: 0.675, blue: 0.933, alpha: 1))
       
     }
-    @IBOutlet weak var facebookLoginButton: UIButton!
     
+    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    
+    @IBAction func unwindToLogin(sender: UIStoryboardSegue){
+    }
+    
+    @IBOutlet weak var facebookLoginButton: UIButton!
     
     @IBOutlet weak var emailSignUpButton: UIButton!
     

@@ -24,6 +24,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource,UITableVie
         
     }
     
+    
     // provide the number of section to the table
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return headerTitlesForSection.count
