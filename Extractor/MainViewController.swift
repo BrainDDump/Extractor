@@ -10,6 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    @IBOutlet weak var emptyNotice: UILabel!
     @IBOutlet weak var ancestorDataTextView: UITextView!
     @IBOutlet weak var newDataTextField:     UITextField!
     
@@ -19,8 +20,16 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        /*if (ancestorDataTextView.text == ""){
+            emptyNotice.hidden = false
+        }*/
         configureView()
         loadNext()
+        
+        if (ancestorDataTextView.text != ""){
+            emptyNotice.hidden = true
+        }
     }
     
     func configureView() {
@@ -44,6 +53,12 @@ class MainViewController: UIViewController {
                 self.newDataTextField.text = ""
             }
         })
+        
+        if (ancestorDataTextView.text == ""){
+            emptyNotice.hidden = false
+        } else {
+            emptyNotice.hidden = true
+        }
     }
     
     @IBAction func rejectButtonPressed() {
