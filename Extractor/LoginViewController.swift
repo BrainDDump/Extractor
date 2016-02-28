@@ -59,7 +59,7 @@ class LoginViewController: UIViewController {
                     // Now some long running task starts...
                     self.delay(1.2) {
                         // ...and once it finishes we flash the HUD for a second.
-                        HUD.flash(.Success, withDelay: 2.0)
+                        HUD.flash(.Success, withDelay: 1.5)
                     }
                     
                 }
@@ -69,9 +69,11 @@ class LoginViewController: UIViewController {
                 self.presentViewController(logInCancel, animated: true, completion: nil);
             }
 
+            self.delay(2.2) {
+                let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+                appDel.tryToLoadMainApp()
+            }
             
-            let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-            appDel.tryToLoadMainApp()
         })
     }
     

@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import PKHUD
 
 class SettingsViewController: UIViewController, UITableViewDataSource,UITableViewDelegate {
 
@@ -63,9 +64,27 @@ class SettingsViewController: UIViewController, UITableViewDataSource,UITableVie
             
             PFUser.logOut()
             print(PFUser.currentUser())
-            self.performSegueWithIdentifier("afterLogout", sender:nil )
+            HUD.flash(.LabeledProgress(title: "Logging Out", subtitle: ""), withDelay: 0.5)
+            // Now some long running task starts...
+            self.delay(1.2) {
+                // ...and once it finishes we flash the HUD for a second.
+                HUD.flash(.Success, withDelay: 2.0)
+            }
+            self.delay(2.5){
+                self.performSegueWithIdentifier("afterLogout", sender:nil )
+            }
+            
             
         }
+    }
+    
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
     }
 
 
