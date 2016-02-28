@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         decorateButton(facebookLoginButton,color: UIColor(red: 0.231, green: 0.349, blue: 0.596, alpha: 1.0) )
-        decorateButton(emailSignUpButton, color: UIColor(red: 0.333, green: 0.675, blue: 0.933, alpha: 1))
+        decorateButton(emailSignUpButton, color: UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1))
       
     }
     

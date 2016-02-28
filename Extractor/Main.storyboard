@@ -33,14 +33,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvz-Wq-uo5">
-                                <rect key="frame" x="160" y="546" width="280" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvz-Wq-uo5">
+                                <rect key="frame" x="161" y="546" width="278" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <inset key="contentEdgeInsets" minX="30" minY="8" maxX="30" maxY="8"/>
                                 <state key="normal" title=" Sign Up With Email" image="Email"/>
                                 <connections>
-                                    <action selector="emailLoginButtonPressed:" destination="k4Y-RX-s2v" eventType="touchUpInside" id="D0g-dR-NIy"/>
-                                    <action selector="facebookLoginButtonPressed" destination="k4Y-RX-s2v" eventType="touchUpInside" id="cbY-rr-Mdo"/>
                                     <segue destination="SIT-s9-v01" kind="show" id="hHq-bh-PCL"/>
                                 </connections>
                             </button>
@@ -57,18 +55,18 @@
                                     <action selector="facebookLoginButtonPressed" destination="k4Y-RX-s2v" eventType="touchUpInside" id="9Eo-Yk-utS"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gYa-fn-qti">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gYa-fn-qti">
                                 <rect key="frame" x="104" y="247" width="393" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3e-2D-uzn">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3e-2D-uzn">
                                 <rect key="frame" x="104" y="306" width="393" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7m-ey-F80">
-                                <rect key="frame" x="257" y="355" width="87" height="53"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7m-ey-F80">
+                                <rect key="frame" x="257" y="381" width="87" height="34"/>
                                 <color key="backgroundColor" red="0.0" green="0.35846387206149843" blue="0.7555831755050505" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Login"/>
                                 <userDefinedRuntimeAttributes>
@@ -83,16 +81,16 @@
                             <constraint firstAttribute="trailingMargin" secondItem="j3e-2D-uzn" secondAttribute="trailing" constant="83" id="3oy-Iu-BAL"/>
                             <constraint firstItem="j3e-2D-uzn" firstAttribute="leading" secondItem="ito-D6-mC3" secondAttribute="leadingMargin" constant="84" id="8Qz-6f-F1f"/>
                             <constraint firstItem="3F4-Ar-lNh" firstAttribute="leading" secondItem="ito-D6-mC3" secondAttribute="leading" id="A9i-iS-xh5"/>
-                            <constraint firstItem="D7m-ey-F80" firstAttribute="leading" secondItem="ito-D6-mC3" secondAttribute="leadingMargin" constant="237" id="AiW-Rd-Jdw"/>
                             <constraint firstItem="uuy-gW-wOc" firstAttribute="centerX" secondItem="ito-D6-mC3" secondAttribute="centerX" id="Das-IN-lUJ"/>
                             <constraint firstItem="gYa-fn-qti" firstAttribute="leading" secondItem="ito-D6-mC3" secondAttribute="leadingMargin" constant="84" id="KhC-qT-R2p"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="D7m-ey-F80" secondAttribute="trailing" constant="236" id="P8C-EN-l8Z"/>
                             <constraint firstItem="GNQ-iU-uoC" firstAttribute="centerX" secondItem="ito-D6-mC3" secondAttribute="centerX" id="SEV-6p-t8U"/>
                             <constraint firstItem="Bvz-Wq-uo5" firstAttribute="centerX" secondItem="3F4-Ar-lNh" secondAttribute="centerX" id="SQp-Q0-jhz"/>
                             <constraint firstItem="GNQ-iU-uoC" firstAttribute="top" secondItem="fxe-Ln-WYn" secondAttribute="bottom" constant="465" id="XeY-LH-zjS"/>
                             <constraint firstItem="hFz-qq-r2C" firstAttribute="top" secondItem="Bvz-Wq-uo5" secondAttribute="bottom" constant="9" id="YgW-fg-uDZ"/>
                             <constraint firstItem="hFz-qq-r2C" firstAttribute="top" secondItem="3F4-Ar-lNh" secondAttribute="bottom" id="b2w-QZ-rJe"/>
+                            <constraint firstItem="j3e-2D-uzn" firstAttribute="top" secondItem="gYa-fn-qti" secondAttribute="bottom" constant="29" id="c9K-J6-HLp"/>
                             <constraint firstAttribute="trailing" secondItem="3F4-Ar-lNh" secondAttribute="trailing" id="gfN-1N-cdx"/>
+                            <constraint firstAttribute="bottom" secondItem="j3e-2D-uzn" secondAttribute="bottom" constant="264" id="ifJ-71-XNb"/>
                             <constraint firstItem="Bvz-Wq-uo5" firstAttribute="height" secondItem="GNQ-iU-uoC" secondAttribute="height" id="kVg-r6-yV7"/>
                             <constraint firstItem="3F4-Ar-lNh" firstAttribute="top" secondItem="ito-D6-mC3" secondAttribute="top" id="mUO-t5-TVG"/>
                             <constraint firstItem="3F4-Ar-lNh" firstAttribute="top" secondItem="uuy-gW-wOc" secondAttribute="bottom" constant="-165" id="xdy-0O-mru"/>
@@ -100,7 +98,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="emailSignUpButton" destination="Bvz-Wq-uo5" id="IYH-Vy-MKn"/>
+                        <outlet property="emailSignUpButton" destination="Bvz-Wq-uo5" id="2sz-AG-Dx0"/>
                         <outlet property="facebookLoginButton" destination="GNQ-iU-uoC" id="fnX-TB-bw6"/>
                         <outlet property="passwordField" destination="j3e-2D-uzn" id="BGV-FM-XYZ"/>
                         <outlet property="usernameField" destination="gYa-fn-qti" id="ccd-so-2pP"/>
@@ -275,7 +273,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="902" y="339"/>
+            <point key="canvasLocation" x="972" y="333"/>
         </scene>
         <!--History-->
         <scene sceneID="FO8-Ou-uEI">
@@ -468,7 +466,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="luK-cV-3JU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="202" y="339"/>
+            <point key="canvasLocation" x="218" y="333"/>
         </scene>
     </scenes>
     <resources>
