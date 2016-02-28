@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class SettingsViewController: UIViewController, UITableViewDataSource,UITableViewDelegate {
 
@@ -58,7 +59,13 @@ class SettingsViewController: UIViewController, UITableViewDataSource,UITableVie
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        
+        if(indexPath.section==2 && indexPath.row==0){
+            
+            PFUser.logOut()
+            print(PFUser.currentUser())
+            self.performSegueWithIdentifier("afterLogout", sender:nil )
+            
+        }
     }
 
 
