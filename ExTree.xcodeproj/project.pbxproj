@@ -48,13 +48,13 @@
 		ED0E64F91C82E31F00BEE8BD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		ED0E64FB1C83058F00BEE8BD /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		ED0E64FD1C8332D100BEE8BD /* StoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
-		ED59AE691C819D98003C09B9 /* Extractor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Extractor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED59AE691C819D98003C09B9 /* ExTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED59AE6C1C819D98003C09B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED59AE6E1C819D98003C09B9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		ED59AE731C819D98003C09B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED59AE761C819D98003C09B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED59AE781C819D98003C09B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED59AE7D1C819D98003C09B9 /* ExtractorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExtractorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED59AE7D1C819D98003C09B9 /* ExTree.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExTree.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED59AE811C819D98003C09B9 /* ExtractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractorTests.swift; sourceTree = "<group>"; };
 		ED59AE831C819D98003C09B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED59AE901C81A59C003C09B9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 		ED59AE601C819D98003C09B9 = {
 			isa = PBXGroup;
 			children = (
-				ED59AE6B1C819D98003C09B9 /* Extractor */,
+				ED59AE6B1C819D98003C09B9 /* ExTree */,
 				ED59AE801C819D98003C09B9 /* ExtractorTests */,
 				ED59AE6A1C819D98003C09B9 /* Products */,
 				A39D0CE437DF01CE5C591A13 /* Pods */,
@@ -114,13 +114,13 @@
 		ED59AE6A1C819D98003C09B9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ED59AE691C819D98003C09B9 /* Extractor.app */,
-				ED59AE7D1C819D98003C09B9 /* ExtractorTests.xctest */,
+				ED59AE691C819D98003C09B9 /* ExTree.app */,
+				ED59AE7D1C819D98003C09B9 /* ExTree.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ED59AE6B1C819D98003C09B9 /* Extractor */ = {
+		ED59AE6B1C819D98003C09B9 /* ExTree */ = {
 			isa = PBXGroup;
 			children = (
 				ED59AE8C1C81A07E003C09B9 /* Data Model */,
@@ -128,6 +128,7 @@
 				ED59AE8E1C81A0AA003C09B9 /* Views */,
 				ED59AE8D1C81A085003C09B9 /* Support Files */,
 			);
+			name = ExTree;
 			path = Extractor;
 			sourceTree = "<group>";
 		};
@@ -196,9 +197,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ED59AE681C819D98003C09B9 /* Extractor */ = {
+		ED59AE681C819D98003C09B9 /* ExTree */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ED59AE861C819D98003C09B9 /* Build configuration list for PBXNativeTarget "Extractor" */;
+			buildConfigurationList = ED59AE861C819D98003C09B9 /* Build configuration list for PBXNativeTarget "ExTree" */;
 			buildPhases = (
 				816775680EB164111341C5E8 /* Check Pods Manifest.lock */,
 				ED59AE651C819D98003C09B9 /* Sources */,
@@ -211,14 +212,14 @@
 			);
 			dependencies = (
 			);
-			name = Extractor;
+			name = ExTree;
 			productName = Extractor;
-			productReference = ED59AE691C819D98003C09B9 /* Extractor.app */;
+			productReference = ED59AE691C819D98003C09B9 /* ExTree.app */;
 			productType = "com.apple.product-type.application";
 		};
-		ED59AE7C1C819D98003C09B9 /* ExtractorTests */ = {
+		ED59AE7C1C819D98003C09B9 /* ExTreeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ED59AE891C819D98003C09B9 /* Build configuration list for PBXNativeTarget "ExtractorTests" */;
+			buildConfigurationList = ED59AE891C819D98003C09B9 /* Build configuration list for PBXNativeTarget "ExTreeTests" */;
 			buildPhases = (
 				ED59AE791C819D98003C09B9 /* Sources */,
 				ED59AE7A1C819D98003C09B9 /* Frameworks */,
@@ -229,9 +230,9 @@
 			dependencies = (
 				ED59AE7F1C819D98003C09B9 /* PBXTargetDependency */,
 			);
-			name = ExtractorTests;
+			name = ExTreeTests;
 			productName = ExtractorTests;
-			productReference = ED59AE7D1C819D98003C09B9 /* ExtractorTests.xctest */;
+			productReference = ED59AE7D1C819D98003C09B9 /* ExTree.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -254,7 +255,7 @@
 					};
 				};
 			};
-			buildConfigurationList = ED59AE641C819D98003C09B9 /* Build configuration list for PBXProject "Extractor" */;
+			buildConfigurationList = ED59AE641C819D98003C09B9 /* Build configuration list for PBXProject "ExTree" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -267,8 +268,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ED59AE681C819D98003C09B9 /* Extractor */,
-				ED59AE7C1C819D98003C09B9 /* ExtractorTests */,
+				ED59AE681C819D98003C09B9 /* ExTree */,
+				ED59AE7C1C819D98003C09B9 /* ExTreeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -375,7 +376,7 @@
 /* Begin PBXTargetDependency section */
 		ED59AE7F1C819D98003C09B9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = ED59AE681C819D98003C09B9 /* Extractor */;
+			target = ED59AE681C819D98003C09B9 /* ExTree */;
 			targetProxy = ED59AE7E1C819D98003C09B9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -482,8 +483,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Extractor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tee.Extractor;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tee.ExTree;
+				PRODUCT_NAME = ExTree;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -498,8 +499,8 @@
 				INFOPLIST_FILE = Extractor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tee.Extractor;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tee.ExTree;
+				PRODUCT_NAME = ExTree;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -511,8 +512,8 @@
 				INFOPLIST_FILE = ExtractorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.BrainDump.ExtractorTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Extractor.app/Extractor";
+				PRODUCT_NAME = ExTree;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExTree.app/ExTree";
 			};
 			name = Debug;
 		};
@@ -523,15 +524,15 @@
 				INFOPLIST_FILE = ExtractorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.BrainDump.ExtractorTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Extractor.app/Extractor";
+				PRODUCT_NAME = ExTree;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExTree.app/ExTree";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ED59AE641C819D98003C09B9 /* Build configuration list for PBXProject "Extractor" */ = {
+		ED59AE641C819D98003C09B9 /* Build configuration list for PBXProject "ExTree" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ED59AE841C819D98003C09B9 /* Debug */,
@@ -540,7 +541,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ED59AE861C819D98003C09B9 /* Build configuration list for PBXNativeTarget "Extractor" */ = {
+		ED59AE861C819D98003C09B9 /* Build configuration list for PBXNativeTarget "ExTree" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ED59AE871C819D98003C09B9 /* Debug */,
@@ -549,7 +550,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ED59AE891C819D98003C09B9 /* Build configuration list for PBXNativeTarget "ExtractorTests" */ = {
+		ED59AE891C819D98003C09B9 /* Build configuration list for PBXNativeTarget "ExTreeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ED59AE8A1C819D98003C09B9 /* Debug */,
