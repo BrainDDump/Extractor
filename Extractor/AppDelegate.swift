@@ -60,8 +60,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - Help methods
     func configureView() {
-        UINavigationBar.appearance().barTintColor = UIColor(red: 177.0/255.0, green: 14.0/255.0, blue: 14.0/255.0, alpha: 0.3)
-        UINavigationBar.appearance().translucent  = true
+        UINavigationBar.appearance().barTintColor = UIColor(red: 237/255.0, green: 174/255.0, blue: 47/255.0, alpha: 1)
+        UINavigationBar.appearance().translucent  = false
         UINavigationBar.appearance().tintColor    = UIColor.whiteColor()
         
         if let barFont = UIFont(name: "Avenir-Light", size: 24.0) {
