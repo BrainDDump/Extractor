@@ -29,7 +29,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource,UITableVie
             HUD.flash(.LabeledProgress(title: "Checking Network", subtitle: ""), withDelay: 1.5)
             // Now some long running task starts...
             self.delay(1.2) {
-                var alert = UIAlertView(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", delegate: nil, cancelButtonTitle: "OK")
+                let alert = UIAlertView(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
             }
         }

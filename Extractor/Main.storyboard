@@ -29,7 +29,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundTest1" translatesAutoresizingMaskIntoConstraints="NO" id="3F4-Ar-lNh">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EXTRACTOR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuy-gW-wOc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="EXTRACTOR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuy-gW-wOc">
                                 <rect key="frame" x="175" y="102" width="250" height="63"/>
                                 <fontDescription key="fontDescription" name="CompletelyNonsense" family="Completely Nonsense" pointSize="60"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -181,7 +181,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up with email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJY-rh-xN4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sign up with email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJY-rh-xN4">
                                 <rect key="frame" x="41" y="76" width="505" height="37"/>
                                 <fontDescription key="fontDescription" name="CompletelyNonsense" family="Completely Nonsense" pointSize="35"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -194,7 +194,7 @@
                                 </constraints>
                                 <state key="normal" title="Sign up"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKi-vW-0VK">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKi-vW-0VK">
                                 <rect key="frame" x="41" y="38" width="48" height="30"/>
                                 <state key="normal" title="&lt; Back"/>
                                 <connections>
@@ -341,7 +341,7 @@
                             </barButtonItem>
                             <barButtonItem title="Top" id="Jcj-by-aZB">
                                 <connections>
-                                    <segue destination="CVH-cr-KEX" kind="show" identifier="showTopStories" id="BEX-aE-hcT"/>
+                                    <segue destination="iOS-bm-Ifc" kind="show" identifier="showTopStories" id="yyx-P9-GZh"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -358,22 +358,45 @@
             </objects>
             <point key="canvasLocation" x="972" y="333"/>
         </scene>
-        <!--History-->
+        <!--Timeline View Controller-->
         <scene sceneID="FO8-Ou-uEI">
             <objects>
-                <tableViewController title="History" id="iOS-bm-Ifc" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2kb-t3-NOi">
+                <tableViewController id="iOS-bm-Ifc" customClass="TimelineViewController" customModule="Extractor" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="179" sectionHeaderHeight="28" sectionFooterHeight="28" id="2kb-t3-NOi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Mrx-ug-1cS">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StoryCell" rowHeight="179" id="Mrx-ug-1cS" customClass="StoryCell" customModule="Extractor" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="179"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mrx-ug-1cS" id="11p-HE-IlD">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="178.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gha-Ub-6k8">
+                                            <rect key="frame" x="100" y="26" width="400" height="128"/>
+                                            <color key="backgroundColor" red="0.03426579013466835" green="0.94742077589035034" blue="0.91321206092834473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="128" id="DXZ-u1-CBt"/>
+                                                <constraint firstAttribute="width" priority="750" constant="400" id="d9g-RK-k4d"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="gha-Ub-6k8" secondAttribute="bottom" constant="16.5" id="J4y-J8-AEa"/>
+                                        <constraint firstItem="gha-Ub-6k8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="11p-HE-IlD" secondAttribute="leading" constant="70" id="NYL-c6-hbY"/>
+                                        <constraint firstItem="gha-Ub-6k8" firstAttribute="centerY" secondItem="11p-HE-IlD" secondAttribute="centerY" id="OCf-SQ-dgH"/>
+                                        <constraint firstItem="gha-Ub-6k8" firstAttribute="centerX" secondItem="11p-HE-IlD" secondAttribute="centerX" id="kdH-Ld-SQK"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gha-Ub-6k8" secondAttribute="trailing" constant="70" id="rwW-AW-l7O"/>
+                                        <constraint firstItem="gha-Ub-6k8" firstAttribute="top" secondItem="11p-HE-IlD" secondAttribute="topMargin" constant="18" id="xE4-IZ-KdM"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="storyTextField" destination="gha-Ub-6k8" id="uNU-TF-ops"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -384,25 +407,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sD2-RH-luJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1838" y="-189"/>
-        </scene>
-        <!--Top View Controller-->
-        <scene sceneID="snU-YF-97c">
-            <objects>
-                <viewController id="CVH-cr-KEX" customClass="TopViewController" customModule="Extractor" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5EL-nr-bqI"/>
-                        <viewControllerLayoutGuide type="bottom" id="JB1-ic-Ol2"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ahd-iB-5eG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x93-yS-p3G" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1838" y="754"/>
+            <point key="canvasLocation" x="1766" y="333"/>
         </scene>
         <!--Settings-->
         <scene sceneID="6Iv-kz-ToM">
@@ -574,4 +579,7 @@
         <image name="Email" width="25" height="25"/>
         <image name="Facebook" width="29" height="29"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="yyx-P9-GZh"/>
+    </inferredMetricsTieBreakers>
 </document>

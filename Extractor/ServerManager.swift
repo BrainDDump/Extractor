@@ -94,5 +94,22 @@ class ServerManager {
             }
         }
     }
+    
+    class func loadTopStories(handler: TextArrayResponceBlock) {
+        PFCloud.callFunctionInBackground("loadTopStories", withParameters: nil) {
+            (objects, error) -> Void in
+            if error != nil {
+                print("Error occured while load top stories. Error: ", error)
+                handler(error: error, texts: nil)
+                return
+            }
+            
+            if let texts = objects as? [String] {
+                handler(error: nil, texts: texts)
+            } else {
+                handler(error: NSError(domain: "could not cast returned data", code: 0, userInfo: nil), texts: nil)
+            }
+        }
+    }
 
 }

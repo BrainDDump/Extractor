@@ -13,8 +13,8 @@ Array.prototype.getUnique = function(){
 }
 
 // Configurations
-const kMaxDepth    = 2;
-const kMaxChildren = 2;
+const kMaxDepth    = 3;
+const kMaxChildren = 1;
 
 const kTwillioCred = {
     PHONE_NUMBER: "8055002188",
@@ -74,10 +74,11 @@ var getUpperNodes = function(node, callback) {
 var getUpperContents = function(node, callback) {
     getUpperNodes(node, function(nodes) {
 
-        var resultingString = "";
+        var resultingString = ""
         nodes.forEach(function(item) {
-            resultingString = item.get("content") + " " + resultingString;
+            resultingString += " " + item.get("content");
         });
+        resultingString +=  " " + node.get("content");
 
         console.log("*** resultingString");
         console.log(resultingString);
@@ -87,15 +88,27 @@ var getUpperContents = function(node, callback) {
 }
 
 var sendTextToUser = function(userId, text) {
+
+    console.log("*** sendTextToUser: ");
+    console.log(userId);
+
     var userQuery = new Parse.Query("_User");
     userQuery.get(userId, {
         success: function(user) {
             if (user.has("phoneNumber")) {
                 var phoneNumber = user.get("phoneNumber");
+
+                console.log("*** phoneNumber: ");
+                console.log(phoneNumber);
                 twilio.sendSms({
                     to:   phoneNumber,
                     from: kTwillioCred.PHONE_NUMBER,
                     body: text
+                }, function(err, responseData) {
+                    if (!err) {
+                        console.log(responseData.from);
+                        console.log(responseData.body);
+                    }
                 });
             }
         },
@@ -157,7 +170,6 @@ Parse.Cloud.define("reject", function(request, response) {
 });
 
 Parse.Cloud.define("loadMyLastContributions", function(request, response) {
-
     var currentUser = Parse.User.current();
     var listQuery = new Parse.Query("List");
     listQuery.addDescending("createdAt");
@@ -173,7 +185,36 @@ Parse.Cloud.define("loadMyLastContributions", function(request, response) {
 
                 var lastNode = item.get("lastNode");
                 getUpperContents(lastNode, function(contents) {
-                    resultingArray = resultingArray.concat(new Array(contents));
+                    resultingArray.push(contents);
+
+                    remainingCalls -= 1;
+                    if (remainingCalls == 0) {
+                        response.success(resultingArray);
+                    }
+                });
+            });
+        },
+        error: function(error) {
+            response.error(error);
+        }
+    });
+});
+
+Parse.Cloud.define("loadTopStories", function(request, response) {
+    var listQuery = new Parse.Query("List");
+    listQuery.addDescending("rating");
+    listQuery.include("lastNode");
+    listQuery.limit(kMaxQuerySize);
+    listQuery.find({
+        success: function(lists) {
+            var remainingCalls = lists.length;
+            
+            var resultingArray = new Array();
+            lists.forEach(function(item) {
+
+                var lastNode = item.get("lastNode");
+                getUpperContents(lastNode, function(contents) {
+                    resultingArray.push(contents);
 
                     remainingCalls -= 1;
                     if (remainingCalls == 0) {

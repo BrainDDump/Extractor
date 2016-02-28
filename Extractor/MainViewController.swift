@@ -97,5 +97,16 @@ class MainViewController: UIViewController {
         rejectButton.enabled = false
     }
     
+    // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showMyStories" {
+            let destVC = segue.destinationViewController as! TimelineViewController
+            destVC.type = "myStories"
+        } else if segue.identifier == "showTopStories" {
+            let destVC = segue.destinationViewController as! TimelineViewController
+            destVC.type = "topStories"
+        }
+    }
+    
 }
 
