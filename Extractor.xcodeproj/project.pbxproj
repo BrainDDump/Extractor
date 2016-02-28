@@ -13,6 +13,7 @@
 		BB36135C45E29B5763D7BFA4 /* Pods_Extractor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3EBEEA72BE7F010681DD76C /* Pods_Extractor.framework */; };
 		ED0E64F81C82DDBB00BEE8BD /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E64F71C82DDBB00BEE8BD /* List.swift */; };
 		ED0E64FA1C82E31F00BEE8BD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E64F91C82E31F00BEE8BD /* User.swift */; };
+		ED0E64FC1C83058F00BEE8BD /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0E64FB1C83058F00BEE8BD /* TopViewController.swift */; };
 		ED59AE6D1C819D98003C09B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED59AE6C1C819D98003C09B9 /* AppDelegate.swift */; };
 		ED59AE6F1C819D98003C09B9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED59AE6E1C819D98003C09B9 /* MainViewController.swift */; };
 		ED59AE741C819D98003C09B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED59AE731C819D98003C09B9 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		D3EBEEA72BE7F010681DD76C /* Pods_Extractor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Extractor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0E64F71C82DDBB00BEE8BD /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		ED0E64F91C82E31F00BEE8BD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		ED0E64FB1C83058F00BEE8BD /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		ED59AE691C819D98003C09B9 /* Extractor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Extractor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED59AE6C1C819D98003C09B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED59AE6E1C819D98003C09B9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				ED59AE6E1C819D98003C09B9 /* MainViewController.swift */,
 				ED59AE901C81A59C003C09B9 /* LoginViewController.swift */,
 				530266B21C826AFB0044FE24 /* SettingsViewController.swift */,
+				ED0E64FB1C83058F00BEE8BD /* TopViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				ED0E64F81C82DDBB00BEE8BD /* List.swift in Sources */,
 				ED59AE951C81BBAB003C09B9 /* ServerManager.swift in Sources */,
 				ED59AE911C81A59C003C09B9 /* LoginViewController.swift in Sources */,
+				ED0E64FC1C83058F00BEE8BD /* TopViewController.swift in Sources */,
 				ED59AE6F1C819D98003C09B9 /* MainViewController.swift in Sources */,
 				ED0E64FA1C82E31F00BEE8BD /* User.swift in Sources */,
 				ED59AE6D1C819D98003C09B9 /* AppDelegate.swift in Sources */,

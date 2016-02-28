@@ -10,7 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    @IBOutlet weak var emptyNotice: UILabel!
+    @IBOutlet weak var emptyNotice:          UILabel!
     @IBOutlet weak var ancestorDataTextView: UITextView!
     @IBOutlet weak var newDataTextField:     UITextField!
     
@@ -20,10 +20,6 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        /*if (ancestorDataTextView.text == ""){
-            emptyNotice.hidden = false
-        }*/
         configureView()
         loadNext()
         
@@ -42,6 +38,11 @@ class MainViewController: UIViewController {
             return
         }
         
+        let whitespaceSet = NSCharacterSet.whitespaceCharacterSet()
+        if newDataTextField.text!.stringByTrimmingCharactersInSet(whitespaceSet) == "" {
+            return
+        }
+        
         submitButton.enabled = false
         let newData = newDataTextField.text!
         ServerManager.push(newData, handler: {
@@ -53,12 +54,6 @@ class MainViewController: UIViewController {
                 self.newDataTextField.text = ""
             }
         })
-        
-        if (ancestorDataTextView.text == ""){
-            emptyNotice.hidden = false
-        } else {
-            emptyNotice.hidden = true
-        }
     }
     
     @IBAction func rejectButtonPressed() {
@@ -79,6 +74,12 @@ class MainViewController: UIViewController {
             if error != nil {
                 print("Error occured while pulling data from server. Error: ", error)
                 return
+            }
+            
+            if text == "" {
+                self.emptyNotice.hidden = false
+            } else {
+                self.emptyNotice.hidden = true
             }
             
             self.ancestorDataTextView.text = text

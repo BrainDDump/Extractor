@@ -107,15 +107,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func logoutUser() {
         PFUser.logOutInBackgroundWithBlock {
             (error: NSError?) -> Void in
-            
             if error != nil {
                 print("Error occured while logging ")
+                return
             }
             
-            if PFUser.currentUser() == nil {
-                let loginVC = self.storyboard.instantiateInitialViewController()
-                self.window?.rootViewController = loginVC
-            }
+            self.tryToLoadMainApp()
         }
     }
 

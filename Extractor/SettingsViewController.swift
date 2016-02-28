@@ -32,10 +32,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource,UITableVie
                 var alert = UIAlertView(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
             }
-            
         }
-        
-        
     }
     
     
@@ -72,10 +69,9 @@ class SettingsViewController: UIViewController, UITableViewDataSource,UITableVie
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        if(indexPath.section==2 && indexPath.row==0){
+        if (indexPath.section == 2 && indexPath.row == 0) {
             
             PFUser.logOut()
-            print(PFUser.currentUser())
             HUD.flash(.LabeledProgress(title: "Logging Out", subtitle: ""), withDelay: 0.5)
             // Now some long running task starts...
             self.delay(1.2) {
@@ -83,10 +79,9 @@ class SettingsViewController: UIViewController, UITableViewDataSource,UITableVie
                 HUD.flash(.Success, withDelay: 2.0)
             }
             self.delay(2.5){
-                self.performSegueWithIdentifier("afterLogout", sender:nil )
+                let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                appDelegate.tryToLoadMainApp()
             }
-            
-            
         }
     }
     

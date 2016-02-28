@@ -72,14 +72,18 @@ var getUpperNodes = function(node, callback) {
 }
 
 var getUpperContents = function(node, callback) {
-    getUpperNodes(node, {
-        success: function(nodes) {
-            nodes.forEach()
-        },
-        error: function(error) {
-            callback("Error occured on the server");
-        }
-    })
+    getUpperNodes(node, function(nodes) {
+
+        var resultingString = "";
+        nodes.forEach(function(item) {
+            resultingString = item.get("content") + " " + resultingString;
+        });
+
+        console.log("*** resultingString");
+        console.log(resultingString);
+
+        callback(resultingString);
+    });
 }
 
 var sendTextToUser = function(userId, text) {
@@ -88,10 +92,6 @@ var sendTextToUser = function(userId, text) {
         success: function(user) {
             if (user.has("phoneNumber")) {
                 var phoneNumber = user.get("phoneNumber");
-
-                console.log("phoneNumber");
-                console.log(phoneNumber);
-
                 twilio.sendSms({
                     to:   phoneNumber,
                     from: kTwillioCred.PHONE_NUMBER,
@@ -156,25 +156,36 @@ Parse.Cloud.define("reject", function(request, response) {
     });
 });
 
-Parse.Cloud.define("fetchMyLastContributions", function(request, response) {
+Parse.Cloud.define("loadMyLastContributions", function(request, response) {
 
     var currentUser = Parse.User.current();
     var listQuery = new Parse.Query("List");
     listQuery.addDescending("createdAt");
     listQuery.contains("contributersSearchStr", currentUser.id);
+    listQuery.include("lastNode");
     listQuery.limit(kMaxQuerySize);
-    listQuery.find{
+    listQuery.find({
         success: function(lists) {
             var remainingCalls = lists.length;
-            var 
+            
+            var resultingArray = new Array();
             lists.forEach(function(item) {
 
+                var lastNode = item.get("lastNode");
+                getUpperContents(lastNode, function(contents) {
+                    resultingArray = resultingArray.concat(new Array(contents));
+
+                    remainingCalls -= 1;
+                    if (remainingCalls == 0) {
+                        response.success(resultingArray);
+                    }
+                });
             });
         },
         error: function(error) {
             response.error(error);
         }
-    }
+    });
 });
 
 Parse.Cloud.afterSave("Node", function(request, response) {

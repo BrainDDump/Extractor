@@ -10,8 +10,9 @@ import Foundation
 import Parse
 
 class ServerManager {
-    typealias TextResponseBlock = (error: NSError?, text: String?) -> Void
-    typealias SuccessResponceBlock = (success: Bool) -> Void
+    typealias TextArrayResponceBlock = (error: NSError?, texts: [String]?) -> Void
+    typealias TextResponseBlock      = (error: NSError?, text:  String?) -> Void
+    typealias SuccessResponceBlock   = (success: Bool) -> Void
 
     private static var parentNode: Node?
     
@@ -77,10 +78,21 @@ class ServerManager {
         handler(success: true)
     }
     
-    
-    
-    
-    
-    
+    class func loadMyLastContributions(handler: TextArrayResponceBlock) {
+        PFCloud.callFunctionInBackground("loadMyLastContributions", withParameters: nil) {
+            (objects, error) -> Void in
+            if error != nil {
+                print("Error occured while loading last contributions. Error: ", error)
+                handler(error: error, texts: nil)
+                return
+            }
+            
+            if let texts = objects as? [String] {
+                handler(error: nil, texts: texts)
+            } else {
+                handler(error: NSError(domain: "could not cast returned data", code: 0, userInfo: nil), texts: nil)
+            }
+        }
+    }
 
 }
