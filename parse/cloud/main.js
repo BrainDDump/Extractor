@@ -23,6 +23,9 @@ const kTwillioCred = {
     AUTH_TOKEN:  "ba6c1e90f165a4d12d87cca1633d788c"
 }
 
+// Costants
+const kMaxQuerySize = 10;
+
 // setup modules
 var twilio  = require('twilio')(kTwillioCred.ACCOUNT_SID, kTwillioCred.AUTH_TOKEN);
 
@@ -68,15 +71,15 @@ var getUpperNodes = function(node, callback) {
     });
 }
 
-var getAllContributersIds = function(node, callback) {
-    getUpperNodes(node, function(nodes) {
-        var contributersIds = [];
-        nodes.forEach(function(item) {
-            contributersIds.push(item.get("owner").id);
-        });
-
-        callback(contributersIds.getUnique());
-    });
+var getUpperContents = function(node, callback) {
+    getUpperNodes(node, {
+        success: function(nodes) {
+            nodes.forEach()
+        },
+        error: function(error) {
+            callback("Error occured on the server");
+        }
+    })
 }
 
 var sendTextToUser = function(userId, text) {
@@ -93,14 +96,6 @@ var sendTextToUser = function(userId, text) {
                     to:   phoneNumber,
                     from: kTwillioCred.PHONE_NUMBER,
                     body: text
-                },
-                {
-                    success: function(httpResponse) {
-                        console.log("SMS sent!");
-                    },
-                    error: function(httpResponse) {
-                        console.error("Uh oh, something went wrong");
-                    }
                 });
             }
         },
@@ -150,8 +145,8 @@ Parse.Cloud.define("reject", function(request, response) {
                 success: function() {
                     response.success();
                 },
-                error: function(error) {
-                    response.error(error);
+                error: function(err) {
+                    response.error(err);
                 }
             });
         },
@@ -159,6 +154,27 @@ Parse.Cloud.define("reject", function(request, response) {
             response.error(error);
         }
     });
+});
+
+Parse.Cloud.define("fetchMyLastContributions", function(request, response) {
+
+    var currentUser = Parse.User.current();
+    var listQuery = new Parse.Query("List");
+    listQuery.addDescending("createdAt");
+    listQuery.contains("contributersSearchStr", currentUser.id);
+    listQuery.limit(kMaxQuerySize);
+    listQuery.find{
+        success: function(lists) {
+            var remainingCalls = lists.length;
+            var 
+            lists.forEach(function(item) {
+
+            });
+        },
+        error: function(error) {
+            response.error(error);
+        }
+    }
 });
 
 Parse.Cloud.afterSave("Node", function(request, response) {
@@ -187,16 +203,18 @@ Parse.Cloud.afterSave("Node", function(request, response) {
             });
             contributersIds = contributersIds.getUnique();
 
-            // Send each contributer a text message
+            // Send each contributer a text message & create a search str
+            var searchString = "";
             contributersIds.forEach(function(item) {
+                searchString += item + "_";
                 sendTextToUser(item, text);
             });
 
             // Create list
             var list = new Parse.Object("List");
-            list.set("lastNode",        newNode);
-            list.set("rating",          rating);
-            list.set("contributersIds", contributersIds);
+            list.set("lastNode",              newNode);
+            list.set("rating",                rating);
+            list.set("contributersSearchStr", searchString);
             list.save();
         });
     }

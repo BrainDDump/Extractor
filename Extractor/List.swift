@@ -13,8 +13,8 @@ class List: PFObject, PFSubclassing {
     
     @NSManaged var lastNode: PFObject
     
-    @NSManaged var rating:          Int
-    @NSManaged var contributersIds: [String]
+    @NSManaged var rating:                Int
+    @NSManaged var contributersSearchStr: String
     
     override class func initialize() {
         struct Static {
