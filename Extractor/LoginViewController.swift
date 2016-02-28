@@ -8,6 +8,7 @@
 
 import UIKit
 import ParseFacebookUtilsV4
+import PKHUD
 
 class LoginViewController: UIViewController {
 
@@ -52,8 +53,11 @@ class LoginViewController: UIViewController {
                 print("Error occured while logging in with facebook. Error: ", error)
                 return
             }
+            else{
+                HUD.flash(.Success, withDelay: 1.5)
+                print(user)
+            }
             
-            print(user)
             
             let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
             appDel.tryToLoadMainApp()

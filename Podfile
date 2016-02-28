@@ -5,7 +5,7 @@ target 'Extractor' do
 
 pod 'Parse'
 pod 'ParseFacebookUtilsV4'
-pod 'JGProgressHUD'
+pod "PKHUD"
 
 end
 
