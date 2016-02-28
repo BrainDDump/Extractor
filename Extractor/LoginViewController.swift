@@ -49,19 +49,39 @@ class LoginViewController: UIViewController {
         let permissions = ["public_profile"]
         PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions, block: {
             (user, error) -> Void in
-            if error != nil {
-                print("Error occured while logging in with facebook. Error: ", error)
-                return
+            if let user = user {
+                if user.isNew {
+                    let newUser = UIAlertController(title: "Congrats!", message: "You have been Signed up and Logged in through Facebook.", preferredStyle: UIAlertControllerStyle.Alert)
+                    newUser.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                    self.presentViewController(newUser, animated: true, completion: nil);
+                } else {
+                    HUD.flash(.LabeledProgress(title: "Facbook LogIn", subtitle: "Logging In..."), withDelay: 0.5)
+                    // Now some long running task starts...
+                    self.delay(1.2) {
+                        // ...and once it finishes we flash the HUD for a second.
+                        HUD.flash(.Success, withDelay: 2.0)
+                    }
+                    
+                }
+            } else {
+                let logInCancel = UIAlertController(title: "Failed", message: "Uh oh. The user cancelled the Facebook Log In!", preferredStyle: UIAlertControllerStyle.Alert)
+                logInCancel.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                self.presentViewController(logInCancel, animated: true, completion: nil);
             }
-            else{
-                HUD.flash(.Success, withDelay: 1.5)
-                print(user)
-            }
-            
+
             
             let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
             appDel.tryToLoadMainApp()
         })
+    }
+    
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
     }
     
 
