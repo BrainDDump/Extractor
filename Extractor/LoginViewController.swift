@@ -20,8 +20,13 @@ class LoginViewController: UIViewController {
       
     }
     
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue){
+        
+    }
+    
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    
     
     @IBOutlet weak var facebookLoginButton: UIButton!
     @IBOutlet weak var emailSignUpButton: UIButton!
