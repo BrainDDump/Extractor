@@ -220,7 +220,7 @@
 				TargetAttributes = {
 					ED59AE681C819D98003C09B9 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = A284373XN8;
+						DevelopmentTeam = Q8R76S2QE8;
 					};
 					ED59AE7C1C819D98003C09B9 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -450,7 +450,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Extractor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.BrainDump.Extractor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tee.Extractor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -465,7 +465,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Extractor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.BrainDump.Extractor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tee.Extractor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
