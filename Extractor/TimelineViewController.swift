@@ -63,6 +63,12 @@ class TimelineViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("StoryCell") as! StoryCell
         cell.storyTextField.text = stories[indexPath.row]
         
+        
+        cell.layer.shadowOffset = CGSizeMake(5, 5)
+        cell.layer.shadowColor = UIColor.blackColor().CGColor
+        cell.layer.shadowRadius = 10
+        cell.layer.shadowOpacity = 1
+        
         return cell
     }
     

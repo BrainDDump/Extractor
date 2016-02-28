@@ -11,7 +11,8 @@ import UIKit
 class StoryCell: UITableViewCell {
     
     @IBOutlet weak var storyTextField: UITextView!
-
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
