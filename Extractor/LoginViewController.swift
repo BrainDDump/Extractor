@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
         
         button.layer.borderColor = color.CGColor
         button.backgroundColor = color;
-        button.layer.borderWidth = 2
+        button.layer.borderWidth = 3
         button.layer.cornerRadius = 7
     }
     
