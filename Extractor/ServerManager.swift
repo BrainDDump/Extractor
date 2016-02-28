@@ -42,9 +42,8 @@ class ServerManager {
     
     class func push(data: String, handler: SuccessResponceBlock) {
         let newNode = Node()
-        newNode.parent   = parentNode
-        newNode.children = []
-        newNode.depth    = parentNode != nil ? parentNode!.depth + 1 : 0
+        newNode.parent = parentNode
+        newNode.depth  = parentNode != nil ? parentNode!.depth + 1 : 0
         
         newNode.rating           = 0
         newNode.reservedChildren = 0

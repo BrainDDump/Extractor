@@ -53,7 +53,7 @@ class LoginViewController: UIViewController {
                 if user.isNew {
                     let newUser = UIAlertController(title: "Congrats!", message: "You have been Signed up and Logged in through Facebook.", preferredStyle: UIAlertControllerStyle.Alert)
                     newUser.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                    self.presentViewController(newUser, animated: true, completion: nil);
+                    self.presentViewController(newUser, animated: true, completion: nil)
                 } else {
                     HUD.flash(.LabeledProgress(title: "Facbook LogIn", subtitle: "Logging In..."), withDelay: 0.5)
                     // Now some long running task starts...
@@ -61,8 +61,9 @@ class LoginViewController: UIViewController {
                         // ...and once it finishes we flash the HUD for a second.
                         HUD.flash(.Success, withDelay: 1.5)
                     }
-                    
                 }
+                
+                self.updateCurrentUserInfoFromFacebook()
             } else {
                 let logInCancel = UIAlertController(title: "Failed", message: "Uh oh. The user cancelled the Facebook Log In!", preferredStyle: UIAlertControllerStyle.Alert)
                 logInCancel.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
@@ -73,7 +74,31 @@ class LoginViewController: UIViewController {
                 let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
                 appDel.tryToLoadMainApp()
             }
+        })
+    }
+    
+    func updateCurrentUserInfoFromFacebook() {
+        
+        let currentUser = PFUser.currentUser() as! User
+        
+        let requestParameters = ["fields": "id, name"]
+        let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: requestParameters)
+        graphRequest.startWithCompletionHandler({
+            (connection: FBSDKGraphRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
             
+            if error != nil {
+                print("Error occured when executing GraphRequest")
+                print(error)
+            } else {
+                print("Feched user: \(result)")
+                
+                if let fullName = result.valueForKey("name") as? String {
+                    currentUser.fullName = fullName
+                    currentUser.saveInBackground()
+                } else {
+                    print("Unable to update user's info with facebook")
+                }
+            }
         })
     }
     

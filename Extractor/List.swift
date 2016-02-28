@@ -1,5 +1,5 @@
 //
-//  Node.swift
+//  List.swift
 //  Extractor
 //
 //  Created by Кирилл on 2/27/16.
@@ -9,15 +9,12 @@
 import Foundation
 import Parse
 
-class Node: PFObject, PFSubclassing {
-    @NSManaged var parent: PFObject?
-    @NSManaged var depth:  Int
+class List: PFObject, PFSubclassing {
     
-    @NSManaged var rating:           Int
-    @NSManaged var reservedChildren: Int
+    @NSManaged var lastNode: PFObject
     
-    @NSManaged var owner:   PFUser
-    @NSManaged var content: String
+    @NSManaged var rating:          Int
+    @NSManaged var contributersIds: [String]
     
     override class func initialize() {
         struct Static {
@@ -28,7 +25,7 @@ class Node: PFObject, PFSubclassing {
         })
     }
     
-    static func parseClassName() -> String {
-        return "Node"
+    class func parseClassName() -> String {
+        return "List"
     }
 }

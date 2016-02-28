@@ -13,7 +13,7 @@ Array.prototype.getUnique = function(){
 }
 
 // Configurations
-const kMaxDepth    = 3;
+const kMaxDepth    = 2;
 const kMaxChildren = 2;
 
 const kTwillioCred = {
@@ -80,11 +80,11 @@ var getAllContributersIds = function(node, callback) {
 }
 
 var sendTextToUser = function(userId, text) {
-    var nodeOwnerQuery = new Parse.Query("_User");
-    nodeOwnerQuery.get(userId, {
-        success: function(nodeOwner) {
-            if (nodeOwner.has("phoneNumber")) {
-                var phoneNumber = nodeOwner.get("phoneNumber");
+    var userQuery = new Parse.Query("_User");
+    userQuery.get(userId, {
+        success: function(user) {
+            if (user.has("phoneNumber")) {
+                var phoneNumber = user.get("phoneNumber");
 
                 console.log("phoneNumber");
                 console.log(phoneNumber);
@@ -172,29 +172,33 @@ Parse.Cloud.afterSave("Node", function(request, response) {
         var userId = newNode.get("owner").id;
 
         getUpperNodes(newNode, function(nodes) {
-            var text = newNode.get("content");
+            // Setup the text of the list & get total rating
+            var text   = newNode.get("content");
+            var rating = 0;
             nodes.forEach(function(item) {
                 text = item.get("content") + " " + text;
+                rating += item.get("rating");
             });
 
-            getAllContributersIds(newNode, function(contributersIds) {
-                contributersIds.forEach(function(item) {
-                    sendTextToUser(item, text);
-                });
+            // Get all contributors
+            var contributersIds = [];
+            nodes.forEach(function(item) {
+                contributersIds.push(item.get("owner").id);
             });
+            contributersIds = contributersIds.getUnique();
+
+            // Send each contributer a text message
+            contributersIds.forEach(function(item) {
+                sendTextToUser(item, text);
+            });
+
+            // Create list
+            var list = new Parse.Object("List");
+            list.set("lastNode",        newNode);
+            list.set("rating",          rating);
+            list.set("contributersIds", contributersIds);
+            list.save();
         });
     }
-
-    var parentNodeId = newNode.get("parent").id
-    var parentQuery = new Parse.Query("Node");
-    parentQuery.get(parentNodeId, {
-        success: function(parentNode) {
-            parentNode.addUnique("children", newNode.id);
-            parentNode.save();
-        },
-        error: function(error) {
-            console.error(error);
-        }
-    });
 });
 
