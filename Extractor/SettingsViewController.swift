@@ -19,10 +19,22 @@ class SettingsViewController: UIViewController, UITableViewDataSource,UITableVie
     let rowData = [["User Info"],["Privacy Settings", "Info Settings", "Notification Settings"] , ["Log Out"]]
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.settingsTable.dataSource=self
-        self.settingsTable.delegate=self
+        if Reachability.isConnectedToNetwork() == true {
+            super.viewDidLoad()
+            
+            self.settingsTable.dataSource=self
+            self.settingsTable.delegate=self
+        } else {
+            print("Internet connection FAILED")
+            HUD.flash(.LabeledProgress(title: "Checking Network", subtitle: ""), withDelay: 1.5)
+            // Now some long running task starts...
+            self.delay(1.2) {
+                var alert = UIAlertView(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
+            }
+            
+        }
+        
         
     }
     
