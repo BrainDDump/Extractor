@@ -87,6 +87,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Extractor/Bolts.framework"
   install_framework "Pods-Extractor/FBSDKCoreKit.framework"
   install_framework "Pods-Extractor/FBSDKLoginKit.framework"
+  install_framework "Pods-Extractor/JGProgressHUD.framework"
   install_framework "Pods-Extractor/Parse.framework"
   install_framework "Pods-Extractor/ParseFacebookUtilsV4.framework"
 fi
@@ -94,6 +95,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Extractor/Bolts.framework"
   install_framework "Pods-Extractor/FBSDKCoreKit.framework"
   install_framework "Pods-Extractor/FBSDKLoginKit.framework"
+  install_framework "Pods-Extractor/JGProgressHUD.framework"
   install_framework "Pods-Extractor/Parse.framework"
   install_framework "Pods-Extractor/ParseFacebookUtilsV4.framework"
 fi
