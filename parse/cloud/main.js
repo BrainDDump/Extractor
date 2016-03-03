@@ -26,9 +26,6 @@ const kTwillioCred = {
 // Costants
 const kMaxQuerySize = 10;
 
-// setup modules
-var twilio  = require('twilio')(kTwillioCred.ACCOUNT_SID, kTwillioCred.AUTH_TOKEN);
-
 // Helper functions
 var getFreeNode = function(callback) {
     var query = new Parse.Query("Node");
@@ -84,37 +81,6 @@ var getUpperContents = function(node, callback) {
         console.log(resultingString);
 
         callback(resultingString);
-    });
-}
-
-var sendTextToUser = function(userId, text) {
-
-    console.log("*** sendTextToUser: ");
-    console.log(userId);
-
-    var userQuery = new Parse.Query("_User");
-    userQuery.get(userId, {
-        success: function(user) {
-            if (user.has("phoneNumber")) {
-                var phoneNumber = user.get("phoneNumber");
-
-                console.log("*** phoneNumber: ");
-                console.log(phoneNumber);
-                twilio.sendSms({
-                    to:   phoneNumber,
-                    from: kTwillioCred.PHONE_NUMBER,
-                    body: text
-                }, function(err, responseData) {
-                    if (!err) {
-                        console.log(responseData.from);
-                        console.log(responseData.body);
-                    }
-                });
-            }
-        },
-        error: function(error) {
-            console.error(error);
-        }
     });
 }
 
@@ -259,7 +225,6 @@ Parse.Cloud.afterSave("Node", function(request, response) {
             var searchString = "";
             contributersIds.forEach(function(item) {
                 searchString += item + "_";
-                sendTextToUser(item, text);
             });
 
             // Create list
