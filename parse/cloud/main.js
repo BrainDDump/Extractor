@@ -12,39 +12,52 @@ Array.prototype.getUnique = function(){
     return a;
 }
 
-// Configurations
-const kMaxDepth    = 3;
-const kMaxChildren = 2;
-
-const kTwillioCred = {
-    PHONE_NUMBER: "8055002188",
-
-    ACCOUNT_SID: "AC5fafcc7cd2a64bf9bd9cc1383b54ff79",
-    AUTH_TOKEN:  "ba6c1e90f165a4d12d87cca1633d788c"
-}
-
 // Costants
 const kMaxQuerySize = 10;
 
 // Helper functions
-var getFreeNode = function(callback) {
-    var query = new Parse.Query("Node");
-    query.lessThan("depth",            kMaxDepth);
-    query.lessThan("reservedChildren", kMaxChildren);
-    query.greaterThan("rating",        -2);
-    query.find({
-        success: function(results) {
-            if (results.length == 0) {
-                callback.success(null);
-                return;
-            }
-
-            var randomNode = results[Math.floor(Math.random()* results.length)];
-            callback.success(randomNode);
+var getRoom(roomId, callback) {
+    var query = new Parse.Query("Room");
+    query.get(roomId, {
+        success: function(room) {
+            callback(room);
         },
         error: function(error) {
-            callback.error("Error in the function helpers.getFreeNode");
+            callback(null);
         }
+    });
+}
+
+var getFreeNodeForRoom = function(roomId, callback) {
+    getRoom(roomId, function(room) {
+        if (room == null) {
+            callback.error("Room does not exist");
+            return;
+        }
+
+        var maxDepth    = room.get("maxDepth");
+        var maxChildren = room.get("maxChildren");
+        var minRating   = room.get("minRating");
+
+        var query = new Parse.Query("Node");
+        query.equalTo("room",              room);
+        query.lessThan("depth",            maxDepth);
+        query.lessThan("reservedChildren", maxChildren);
+        query.greaterThan("rating",        minRating);
+        query.find({
+            success: function(results) {
+                if (results.length == 0) {
+                    callback.success(null);
+                    return;
+                }
+
+                var randomNode = results[Math.floor(Math.random() * results.length)];
+                callback.success(randomNode);
+            },
+            error: function(error) {
+                callback.error("Error in the function helpers.getFreeNode");
+            }
+        });
     });
 }
 
@@ -77,22 +90,22 @@ var getUpperContents = function(node, callback) {
         });
         resultingString +=  " " + node.get("content");
 
-        console.log("*** resultingString");
-        console.log(resultingString);
-
         callback(resultingString);
     });
 }
 
 Parse.Cloud.define("pull", function(request, response) {
-	getFreeNode({
+    var params = request.params;
+
+    var roomId = params.roomId;
+	getFreeNode(roomId, {
         success: function(node) {
             if (node == null) {
-                response.success(new Array());
+                response.success(null);
                 return;
             }
 
-            getUpperNodes(node, function(ancestors) {
+            getUpperContents(node, function(contents) {
                 var newArray = new Array(node);
 
                 node.increment("reservedChildren", 1);
@@ -112,7 +125,7 @@ Parse.Cloud.define("pull", function(request, response) {
     })
 });
 
-Parse.Cloud.define("reject", function(request, response) {
+Parse.Cloud.define("skip", function(request, response) {
 
     var parentNodeId = request.params.objectId;
     var parentQuery = new Parse.Query("Node");
@@ -136,6 +149,9 @@ Parse.Cloud.define("reject", function(request, response) {
 });
 
 Parse.Cloud.define("loadMyLastContributions", function(request, response) {
+
+    // get room!
+
     var currentUser = Parse.User.current();
     var listQuery = new Parse.Query("List");
     listQuery.addDescending("createdAt");
@@ -167,6 +183,9 @@ Parse.Cloud.define("loadMyLastContributions", function(request, response) {
 });
 
 Parse.Cloud.define("loadTopStories", function(request, response) {
+
+    // get room!
+
     var listQuery = new Parse.Query("List");
     listQuery.addDescending("rating");
     listQuery.include("lastNode");
@@ -201,6 +220,8 @@ Parse.Cloud.afterSave("Node", function(request, response) {
     if (newNode.has("parent") == false) {
         return;
     }
+
+    // get max depth from room
 
     if (newNode.get("depth") >= kMaxDepth) {
         var userId = newNode.get("owner").id;
